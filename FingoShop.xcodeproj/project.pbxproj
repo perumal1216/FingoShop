@@ -11,6 +11,7 @@
 		2B0404711DD783CA00AA4CF2 /* GGFullscreenImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0404701DD783CA00AA4CF2 /* GGFullscreenImageViewController.m */; };
 		2B72C2531DC304A700A0C232 /* MEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B72C2521DC304A700A0C232 /* MEMenuViewController.m */; };
 		2B980CBF1E52BCEA00CC7747 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B980CBE1E52BCEA00CC7747 /* SignupViewController.m */; };
+		2BBCF8EB1E7A96A600F3283E /* ReachabilityTM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F768D1D42487B00AB84AD /* ReachabilityTM.m */; };
 		2BE6680F1E6698CA000DB721 /* arts_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BE668051E6698CA000DB721 /* arts_icon.png */; };
 		2BE668101E6698CA000DB721 /* beauty_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BE668061E6698CA000DB721 /* beauty_icon.png */; };
 		2BE668111E6698CA000DB721 /* crazy_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BE668071E6698CA000DB721 /* crazy_icon.png */; };
@@ -71,7 +72,6 @@
 		7B3BF9E91D35480E00F7FF26 /* ComplexSubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3BF9E71D35480E00F7FF26 /* ComplexSubTableViewCell.m */; };
 		7B3BF9EB1D35641100F7FF26 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B3BF9EA1D35641100F7FF26 /* arrow.png */; };
 		7B5F768E1D42487B00AB84AD /* ReachabilityManagerTM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F768B1D42487B00AB84AD /* ReachabilityManagerTM.m */; };
-		7B5F768F1D42487B00AB84AD /* ReachabilityTM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F768D1D42487B00AB84AD /* ReachabilityTM.m */; };
 		7B8F32D51D29768900D1F9E4 /* ProductDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F32D41D29768900D1F9E4 /* ProductDetailVC.m */; };
 		7BB6C1001D3664500022A7FB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6C0FF1D3664500022A7FB /* LoginViewController.m */; };
 		7BB6C1091D3665F00022A7FB /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BB6C1021D3665F00022A7FB /* GoogleUtilities.framework */; };
@@ -1667,6 +1667,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BBCF8EB1E7A96A600F3283E /* ReachabilityTM.m in Sources */,
 				C3D993801E52A36A002ACBC4 /* ChangePasswordVC.m in Sources */,
 				BE48642C1D3AADD500652AFC /* ShippingDetailsViewController.m in Sources */,
 				4CFF7EC01D1EB67D006B1780 /* menuCell.m in Sources */,
@@ -1754,7 +1755,6 @@
 				BEA6FBDD1D6F8B0E00EB8401 /* WebViewJavascriptBridge.m in Sources */,
 				BE75061D1D39691D00CA0C99 /* RATreeNodeCollectionController.m in Sources */,
 				BEA6FBD41D6F8AE600EB8401 /* PayUSAGetTransactionID.m in Sources */,
-				7B5F768F1D42487B00AB84AD /* ReachabilityTM.m in Sources */,
 				4CFF7EB71D1EB432006B1780 /* ECSlidingInteractiveTransition.m in Sources */,
 				7B3BF9E01D35410200F7FF26 /* YUTableViewItem.m in Sources */,
 				2BF5A2F81DBBA472006BC8E3 /* ProductDetailNewVC.m in Sources */,

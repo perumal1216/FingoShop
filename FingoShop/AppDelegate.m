@@ -21,17 +21,16 @@
     
     
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-
+    
     
     //*********** Internet Starts Here **************
     
     net = -1;
     
     
-    [ReachabilityManagerTM sharedManag
+    [ReachabilityManagerTM sharedManager];
     
-     
-     
+    
     // Initialize Reachability
     ReachabilityTM *reachability = [ReachabilityTM reachabilityWithHostname:@"www.google.com"];
     
@@ -42,14 +41,14 @@
         NetworkStatus internetStatus = [reachability currentReachabilityStatus];
         switch (internetStatus)
         {
-            case ReachableViaWiFi:
+                case ReachableViaWiFi:
             {
                 NSLog(@" APP The internet is working via WIFI");
                 net = 1;
                 break;
             }
                 
-            case ReachableViaWWAN:
+                case ReachableViaWWAN:
             {
                 NSLog(@" APP The internet is working via WWAN!");
                 net = 1;
@@ -95,9 +94,9 @@
         
         [[NSUserDefaults standardUserDefaults] setObject:[Respose_dic objectForKey:@"sessionid"] forKey:@"sessionid"];
         
-
-    }
         
+    }
+    
     
     
     [[FBSDKApplicationDelegate sharedInstance] application:application
@@ -156,9 +155,9 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
-//    serviceconn = [[ServiceConnection alloc]init];
-//    serviceconn = nil;
-  //  NSURLConnection * conn=[[NSURLConnection alloc]initWithRequest:request delegate:self];
+    //    serviceconn = [[ServiceConnection alloc]init];
+    //    serviceconn = nil;
+    //  NSURLConnection * conn=[[NSURLConnection alloc]initWithRequest:request delegate:self];
     //[conn st]
 }
 

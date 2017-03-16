@@ -28,9 +28,10 @@
     net = -1;
     
     
-    [ReachabilityManagerTM sharedManager];
+    [ReachabilityManagerTM sharedManag
     
-    
+     
+     
     // Initialize Reachability
     ReachabilityTM *reachability = [ReachabilityTM reachabilityWithHostname:@"www.google.com"];
     

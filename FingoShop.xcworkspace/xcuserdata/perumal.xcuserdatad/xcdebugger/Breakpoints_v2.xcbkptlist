@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ServiceConnection.m"
-            timestampString = "511116752.226792"
+            timestampString = "513056118.47486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
             landmarkName = "-UpdateAddress:"
             landmarkType = "7">
          </BreakpointContent>
@@ -145,53 +145,6 @@
             endingLineNumber = "278"
             landmarkName = "-jsonData:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__38-[InformationViewController jsonData:]_block_invoke"
-                  moduleName = "FingoShop"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/perumal/Desktop/Projects/FingoShop/FingoShop/FingoShop/InformationViewController.m"
-                  timestampString = "511120487.287058"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "170">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_"
-                  moduleName = "FingoShop"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/perumal/Desktop/Projects/FingoShop/FingoShop/FingoShop/InformationViewController.m"
-                  timestampString = "511120487.289116"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "51">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_"
-                  moduleName = "FingoShop"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/perumal/Desktop/Projects/FingoShop/FingoShop/FingoShop/InformationViewController.m"
-                  timestampString = "511120487.292174"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "39">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -255,6 +208,38 @@
             startingLineNumber = "165"
             endingLineNumber = "165"
             landmarkName = "-btnAddClicked:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FingoShop/ServiceConnection.m"
+            timestampString = "513055123.193723"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "-GetSearchList:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FingoShop/SearchViewController.m"
+            timestampString = "513055134.859802"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-btnDoneClicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

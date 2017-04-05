@@ -252,10 +252,20 @@
 {
     
      NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/search?q=%@&SID=%@",Post,[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
+    NSString* urlText = url_Method;
+//    [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]
+    NSString* urlTextEscaped =[urlText stringByAddingPercentEscapesUsingEncoding:
+                               NSUTF8StringEncoding];
+    //[urlText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    NSURL *main_url = [NSURL URLWithString: urlTextEscaped];
+    NSLog(@"urlText:        '%@'", urlText);
+    NSLog(@"urlTextEscaped: '%@'", urlTextEscaped);
+    NSLog(@"url:            '%@'", main_url);
     
-    NSURL *url=[NSURL URLWithString:url_Method];
+
+   // NSURL *url=[NSURL URLWithString:main_url];
     
-    [self startRequestForUrl:url];
+    [self startRequestForUrl:main_url];
     
 }
 

@@ -312,11 +312,21 @@
     
     NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/wishlist/addtowishlist"];
 
-    
     NSURL *url=[NSURL URLWithString:url_Method];
     
     [self postRequestForUrl:url postBody:post];
+    
 
+    
+    
+  /*  NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/wishlist/addtowishlist?%@",post];
+    NSURL *url=[NSURL URLWithString:url_Method];
+    
+    [self startRequestForUrl:url];
+    
+*/
+
+   
 
 }
 
@@ -569,6 +579,8 @@
 
 - (void)postRequestForUrl:(NSURL *)url postBody:(NSString *)post
 {
+    
+    
     NSData  * postData   = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString * postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     

@@ -1419,7 +1419,7 @@
 					4CFF7E4E1D1E964D006B1780 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = Y2MC3JYYTY;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -1928,18 +1928,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Divya Jogipeta (798M8WG355)";
-<<<<<<< HEAD
-<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Divya Jogipeta (798M8WG355)";
 				DEVELOPMENT_TEAM = Y2MC3JYYTY;
-=======
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
->>>>>>> origin/master
-=======
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
->>>>>>> origin/master
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1958,18 +1948,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fingoshop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-<<<<<<< HEAD
-<<<<<<< HEAD
 				PROVISIONING_PROFILE = "93dbf200-8c43-4cec-87f6-5342c6c28353";
 				PROVISIONING_PROFILE_SPECIFIER = Fingo_Dev;
-=======
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
->>>>>>> origin/master
-=======
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
->>>>>>> origin/master
 			};
 			name = Debug;
 		};
@@ -1980,18 +1960,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Divya Jogipeta (798M8WG355)";
-<<<<<<< HEAD
-<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Divya Jogipeta (798M8WG355)";
 				DEVELOPMENT_TEAM = Y2MC3JYYTY;
-=======
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
->>>>>>> origin/master
-=======
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
->>>>>>> origin/master
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2010,18 +1980,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fingoshop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-<<<<<<< HEAD
-<<<<<<< HEAD
 				PROVISIONING_PROFILE = "93dbf200-8c43-4cec-87f6-5342c6c28353";
 				PROVISIONING_PROFILE_SPECIFIER = Fingo_Dev;
-=======
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
->>>>>>> origin/master
-=======
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
->>>>>>> origin/master
 			};
 			name = Release;
 		};

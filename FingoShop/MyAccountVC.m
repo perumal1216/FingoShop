@@ -57,19 +57,35 @@
         if ([serviceType isEqualToString:@"GetAccountInfo"])
         {
             
+            if (![[jsonDict objectForKey:@"status"] isEqualToString:@"FAIL"] ) {
+                
+                
+                _first_nameTF.text = [NSString stringWithFormat:@"%@",[jsonDict objectForKey:@"firstname"]];
+                _last_nameTF.text = [NSString stringWithFormat:@"%@",[jsonDict objectForKey:@"lastname"]];
+                _email_TF.text = [NSString stringWithFormat:@"%@",[jsonDict objectForKey:@"email"]];
+                _mobile_TF.text = [NSString stringWithFormat:@"%@",[jsonDict objectForKey:@"mobile"]];
+                
+                
+            }
             
-            
-       }
-        else {
-           // if (jsonDict.count == 0) {
+            else{
+                
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[jsonDict objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
                 
                 UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alertController addAction:ok];
                 
                 [self presentViewController:alertController animated:YES completion:nil];
-           // }
-                   }
+                
+            }
+            
+            
+            
+            
+       }
+        else {
+    
+        }
         
     }
     

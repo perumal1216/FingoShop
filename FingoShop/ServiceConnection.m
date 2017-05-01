@@ -444,7 +444,7 @@
 -(void)GetCustomerAccount
 {
     
-    NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/customer/getAccountInfo?SID==%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
+    NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/customer/getAccountInfo?SID=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
     
     NSURL *url=[NSURL URLWithString:url_Method];
     
@@ -529,7 +529,7 @@
 
 -(void)RemoveItemFromcart:(NSString *)post
 {
-    NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/cart/remove?cart_item_id=%d&SID=%@",[post integerValue],[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
+    NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/cart/remove?cart_item_id=%ld&SID=%@",(long)[post integerValue],[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
     
     NSURL *url=[NSURL URLWithString:url_Method];
     
@@ -547,7 +547,7 @@
 }
 -(void)UpdateCartWithItemId:(NSString *)itemId andQuantity:(NSString *)qty
 {
-    NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/cart/update?cart_item_id=%d&qty=%d&SID=%@",[itemId integerValue],[qty integerValue],[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
+    NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/cart/update?cart_item_id=%ld&qty=%ld&SID=%@",(long)[itemId integerValue],(long)[qty integerValue],[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
     
     NSURL *url=[NSURL URLWithString:url_Method];
     

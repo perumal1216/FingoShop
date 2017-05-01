@@ -13,6 +13,7 @@
 @interface InformationViewController : UIViewController<ServiceConnectionDelegate,NSURLSessionDataDelegate>
 {
     ServiceConnection *serviceconn;
+    NSString *ServiceType;
 
 }
 @property (strong,nonatomic) NSString *type;

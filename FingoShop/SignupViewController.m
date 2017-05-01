@@ -8,7 +8,7 @@
 
 #import "SignupViewController.h"
 #import "SVProgressHUD.h"
-
+#import "OTPViewController.h"
 #import "Constants.h"
 
 @interface SignupViewController ()
@@ -201,18 +201,38 @@
            // )
         if ([[NSString stringWithFormat:@"%@",[dictObj objectForKey:@"status"]] isEqualToString:@"1"])
         {
-            alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:@"Registration completed successfully" preferredStyle:UIAlertControllerStyleAlert];
+          
+            /*alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[dictObj objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
             
             [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 [self.navigationController popViewControllerAnimated:YES];
             }]];
             
             [self presentViewController:alertController animated:YES completion:nil];
+             */
+            
+            NSString *post=[NSString stringWithFormat:@"email=%@&password=%@&mobile=%@&fname=%@&lname=%@",_txtEmail.text,_txtPassword.text,_txt_Telephone.text,_txtName.text,_txt_lastname.text];
+            
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc]init];
+            
+            [dict setObject:[NSString stringWithFormat:@"%@",_txtEmail.text]forKey:@"email"];
+             [dict setObject:[NSString stringWithFormat:@"%@",_txtPassword.text]forKey:@"password"];
+             [dict setObject:[NSString stringWithFormat:@"%@",_txt_Telephone.text]forKey:@"mobile"];
+             [dict setObject:[NSString stringWithFormat:@"%@",_txtName.text]forKey:@"fname"];
+             [dict setObject:[NSString stringWithFormat:@"%@",_txt_lastname.text]forKey:@"lname"];
+            
+            OTPViewController *otpVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"OTPViewController"];
+            otpVC.postString = post;
+            otpVC.postDict = dict;
+            
+            [self.navigationController pushViewController:otpVC animated:YES];
+            
+            
 
         }
         else
         {
-            alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:@"This Email ID already exits,Please try with another Email ID" preferredStyle:UIAlertControllerStyleAlert];
+            alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[dictObj objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
             
             [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 // [self closeAlertview];

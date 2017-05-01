@@ -143,6 +143,7 @@
     cell.ProductTitle.text=[dict objectForKey:@"name"];
     if ([[NSString stringWithFormat:@"%@",[additionalDataDict objectForKey:@"status"]] isEqualToString:@"cancel"]) {
         [btn setHidden:YES];
+        cell.lblStatus.text = @"Canceled";
     }
     else{
         

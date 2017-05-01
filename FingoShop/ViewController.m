@@ -29,7 +29,7 @@
     NSMutableArray *homePageCategoriesArr;
     NSMutableDictionary*pagenewImages;
     NSMutableArray *categoriesArr,*myarr;
-    UIBarButtonItem *AP_barbutton2,*AP_barbutton3;
+    UIBarButtonItem *AP_barbutton2,*AP_barbutton3,*AP_barbutton4;
     NSMutableDictionary *childCategoriesDict,*newdict,*jsonDict;
     NSString *ServiceType;
     NSInteger bannerPageNum;
@@ -84,9 +84,9 @@ AppDelegate *apdl;
    // NSDictionary*newimg = [jsonDict ];
     // bannerarry=[NSMutableArray arrayWithObject:datadic];
     
-    horizontal_imageArray = [[NSArray alloc]initWithObjects:@"electronics_icon.png",@"kitchen_icon.png",@"kids_icon.png",@"beauty_icon.png",@"women_acc_icon.png",@"men_acc_icon.png",@"elec_app_icon.png",@"arts_icon.png",@"crazy_icon.png",@"sports_icon.png", nil];
-    horizontal_titalArray = [[NSArray alloc]initWithObjects:@"Computers",@"Kitchen",@"Toys",@"Beauty",@"Woman Accessories",@"Men Accessories",@"Electronic Appliances",@"Arts N Crafts",@"Crazy Collections",@"Sports", nil];
-    horizontal_categoryIDArray = [[NSArray alloc]initWithObjects:@"226",@"227",@"409",@"164",@"172",@"354",@"237",@"230",@"674",@"252",nil];
+    horizontal_imageArray = [[NSArray alloc]initWithObjects:@"virtual_shopping.png",@"electronics_icon.png",@"kitchen_icon.png",@"kids_icon.png",@"beauty_icon.png",@"women_acc_icon.png",@"men_acc_icon.png",@"elec_app_icon.png",@"arts_icon.png",@"crazy_icon.png",@"sports_icon.png", nil];
+    horizontal_titalArray = [[NSArray alloc]initWithObjects:@"Virtual Shopping",@"Computers",@"Kitchen",@"Toys",@"Beauty",@"Woman Accessories",@"Men Accessories",@"Electronic Appliances",@"Arts N Crafts",@"Crazy Collections",@"Sports", nil];
+    horizontal_categoryIDArray = [[NSArray alloc]initWithObjects:@"",@"226",@"227",@"409",@"164",@"172",@"354",@"237",@"230",@"674",@"252",nil];
     
     [_Horizontal_CollectionVW reloadData];
     
@@ -157,8 +157,17 @@ AppDelegate *apdl;
     AP_barbutton3 = [[UIBarButtonItem alloc] initWithCustomView:aaButton3];
     [aaButton3 addTarget:self action:@selector(btnSearchClicked:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    UIImage *abuttonImage4 = [UIImage imageNamed:@"ic_vs.png"];
+    UIButton *aaButton4 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aaButton4 setImage:abuttonImage4 forState:UIControlStateNormal];
+    aaButton4.frame = CGRectMake(0.0, 0.0, 36.0, 36.0);
+    AP_barbutton4 = [[UIBarButtonItem alloc] initWithCustomView:aaButton4];
+    [aaButton4 addTarget:self action:@selector(btnVirtualShopping:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:AP_barbutton2,AP_barbutton3, nil];
+    [NSArray arrayWithObjects:AP_barbutton2,AP_barbutton4,AP_barbutton3,nil];
     
     
     
@@ -1080,6 +1089,15 @@ AppDelegate *apdl;
     NSString *selectedItemType;
     if (collectionView==_Horizontal_CollectionVW)
     {
+        if (indexPath.row == 0) {
+            
+            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VirtualShoppingVC"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
+        }
+        else{
+        
         selectedItemID =[NSString stringWithFormat:@"%@",[horizontal_categoryIDArray objectAtIndex:indexPath.row]];
        // selectedItemType = @"Electronics";
         NSLog(@"%@",selectedItemID);
@@ -1087,6 +1105,7 @@ AppDelegate *apdl;
         _WSConstSelectedCategoryID = selectedItemID;
        // _WSConstSelectedCategoryType = selectedItemType;
         [self performSegueWithIdentifier:@"detailSegue" sender:self];
+        }
     }
    else if (collectionView==_Electronics_collecVW)
     {
@@ -1280,6 +1299,15 @@ AppDelegate *apdl;
     }
 }
 */
+
+
+-(void)btnVirtualShopping:(id)sender
+{
+    
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VirtualShoppingVC"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 - (void)btnSearchClicked:(id)sender
 {
     

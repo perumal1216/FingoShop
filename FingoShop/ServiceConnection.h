@@ -43,7 +43,7 @@
 -(void)ApplyCoupon:(NSString *)post;
 -(void)UpdateCartWithItemId:(NSString *)itemId andQuantity:(NSString *)qty;
 -(void)AddToCart:(NSString *)PoductID qty:(NSString *)qty;
--(void)AddToCart:(NSString *)PoductID qty:(NSString *)qty option:(NSString *)optionId size:(NSString *)size;
+-(void)AddToCart:(NSString *)PoductID qty:(NSString *)qty option:(NSString *)optionId size:(NSString *)size option1:(NSString *)optionId1 size1:(NSString *)size1 compareStr:(NSString *)compareStr;
 -(void)cashOnDeliveyAvailability:(NSString *)post;
 -(void)GetMainBannerImages;
 -(void)savePayment:(NSString *)paymentMethod;
@@ -59,6 +59,7 @@
 -(void)destroyCartItems;
 -(void)getPaymentMethods;
 -(void)cancelOrder:(NSString*)orderID;
+-(void)GetVirtualImage:(NSString *)productId;
 
 //
 //

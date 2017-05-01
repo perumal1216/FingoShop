@@ -14,6 +14,7 @@
     ServiceConnection *serviceconn;
     NSString *ServiceType;
     UIPickerView *pickerView;
+     UIPickerView *pickerView1;
     UIToolbar *toolBar;
     
 }

@@ -28,7 +28,7 @@ extern NSString* _WSServiceType;
 extern NSString* _WSConstSelectedCategoryID;
 
 extern NSString* _backNavigationName;
-
+extern NSString* _backNavigationName1;
 static NSString *const BaseURL = @"https://www.fingoshop.com/restconnect/customer/";
 
 

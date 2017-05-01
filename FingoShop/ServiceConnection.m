@@ -27,6 +27,18 @@
     
 }
 
+-(void)GetVirtualImage:(NSString *)productId
+{
+    NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/products/getVirtualPic?product=%@",productId];
+    
+    
+    NSURL *url=[NSURL URLWithString:url_Method];
+    
+    [self startRequestForUrl:url];
+    
+    
+}
+
 -(void)GetShipmentDetails
 {
     
@@ -443,7 +455,9 @@
     
 }
 
--(void)AddToCart:(NSString *)PoductID qty:(NSString *)qty option:(NSString *)optionId size:(NSString *)size
+-(void)AddToCart:(NSString *)PoductID qty:(NSString *)qty option:(NSString *)optionId size:(NSString *)size option1:(NSString *)optionId1 size1:(NSString *)size1 compareStr:(NSString *)compareStr
+
+//-(void)AddToCart:(NSString *)PoductID qty:(NSString *)qty option:(NSString *)optionId size:(NSString *)size
 {
     NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/cart/add?SID=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
@@ -461,10 +475,20 @@
     jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
     jsonString = [jsonString stringByReplacingOccurrencesOfString:@"{" withString:@"("];
     jsonString = [jsonString stringByReplacingOccurrencesOfString:@"}" withString:@")"];
+    NSString *post;
 
-
+    if ([compareStr isEqualToString:@"super_attribute"]) {
+        
+         post = [NSString stringWithFormat:@"product=%@&qty=%@&super_attribute[%@]=%@&super_attribute[%@]=%@",PoductID,qty,optionId,size,optionId1,size1];
+    }
+    else{
+         post = [NSString stringWithFormat:@"product=%@&qty=%@&super_attribute[%@]=%@",PoductID,qty,optionId,size];
+    }
     
-    NSString *post = [NSString stringWithFormat:@"product=%@&qty=%@&super_attribute[%@]=%@",PoductID,qty,optionId,size];
+   
+    
+   
+    
     
 //    NSMutableDictionary *dict = [NSMutableDictionary new];
 //    NSMutableDictionary *dict1 = [NSMutableDictionary new];

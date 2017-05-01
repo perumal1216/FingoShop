@@ -50,7 +50,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.5.9</string>
+	<string>1.5.8</string>
 	<key>FacebookAppID</key>
 	<string>933245113454337</string>
 	<key>FacebookDisplayName</key>
@@ -68,6 +68,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>My description about why I need this capability</string>
+	<key>NSCameraUsageDescription - 2</key>
+	<string>My description about why I need this capability</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>My description about why I need this capability</string>
 	<key>UILaunchStoryboardName</key>
 	<string>FingoLaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

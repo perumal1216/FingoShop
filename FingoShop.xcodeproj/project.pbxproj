@@ -194,8 +194,15 @@
 		BEF8A6411D6E2A980078F19F /* splash_screen_xxhdpi.png in Resources */ = {isa = PBXBuildFile; fileRef = BEF8A63D1D6E2A980078F19F /* splash_screen_xxhdpi.png */; };
 		BEF8A6441D6E363D0078F19F /* PayUPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8A6431D6E363D0078F19F /* PayUPaymentViewController.m */; };
 		C301A6621E77199B00160119 /* splash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = C301A6611E77199B00160119 /* splash_screen.png */; };
+		C30C84971EAA7782008AEC9E /* virtual_shopping.png in Resources */ = {isa = PBXBuildFile; fileRef = C30C84961EAA7782008AEC9E /* virtual_shopping.png */; };
+		C30C849B1EAA7873008AEC9E /* VirtualShoppingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C30C849A1EAA7873008AEC9E /* VirtualShoppingVC.m */; };
+		C30C849D1EAA7DC2008AEC9E /* vs_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C30C849C1EAA7DC2008AEC9E /* vs_bg.jpg */; };
+		C30C84A31EAA892E008AEC9E /* SelectCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C30C84A21EAA892E008AEC9E /* SelectCategoryVC.m */; };
+		C30E8E141EAE7292005BADDB /* ic_vs.png in Resources */ = {isa = PBXBuildFile; fileRef = C30E8E131EAE7292005BADDB /* ic_vs.png */; };
+		C37953D81EB1840D005FADEC /* OTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C37953D71EB1840D005FADEC /* OTPViewController.m */; };
 		C3A6DCB41E53FBC900D8FB5B /* KIImagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A6DCB31E53FBC900D8FB5B /* KIImagePager.m */; };
 		C3D993801E52A36A002ACBC4 /* ChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D3D6991E52294F00CA0547 /* ChangePasswordVC.m */; };
+		C3F18E361EAC9E860081B827 /* VirtualDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F18E351EAC9E860081B827 /* VirtualDetailsVC.m */; };
 		ED0BA2FF6366059F58759EF2 /* libPods-FingoShopUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6B0A937B29DF8B6B588F93 /* libPods-FingoShopUITests.a */; };
 		F2ACCA671E1866A90058E0E9 /* bannerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2ACCA661E1866A90058E0E9 /* bannerCollectionViewCell.m */; };
 /* End PBXBuildFile section */
@@ -549,12 +556,23 @@
 		BEF8A6421D6E363D0078F19F /* PayUPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayUPaymentViewController.h; sourceTree = "<group>"; };
 		BEF8A6431D6E363D0078F19F /* PayUPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayUPaymentViewController.m; sourceTree = "<group>"; };
 		C301A6611E77199B00160119 /* splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_screen.png; sourceTree = "<group>"; };
+		C30C84961EAA7782008AEC9E /* virtual_shopping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virtual_shopping.png; sourceTree = "<group>"; };
+		C30C84991EAA7873008AEC9E /* VirtualShoppingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualShoppingVC.h; sourceTree = "<group>"; };
+		C30C849A1EAA7873008AEC9E /* VirtualShoppingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualShoppingVC.m; sourceTree = "<group>"; };
+		C30C849C1EAA7DC2008AEC9E /* vs_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vs_bg.jpg; sourceTree = "<group>"; };
+		C30C849E1EAA81BB008AEC9E /* VirtualDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualDetailsVC.h; sourceTree = "<group>"; };
+		C30C84A11EAA892E008AEC9E /* SelectCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCategoryVC.h; sourceTree = "<group>"; };
+		C30C84A21EAA892E008AEC9E /* SelectCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCategoryVC.m; sourceTree = "<group>"; };
+		C30E8E131EAE7292005BADDB /* ic_vs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vs.png; sourceTree = "<group>"; };
+		C37953D61EB1840D005FADEC /* OTPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPViewController.h; sourceTree = "<group>"; };
+		C37953D71EB1840D005FADEC /* OTPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPViewController.m; sourceTree = "<group>"; };
 		C3A6DCB21E53FBC900D8FB5B /* KIImagePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIImagePager.h; sourceTree = "<group>"; };
 		C3A6DCB31E53FBC900D8FB5B /* KIImagePager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIImagePager.m; sourceTree = "<group>"; };
 		C3D3D6981E52294F00CA0547 /* ChangePasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordVC.h; sourceTree = "<group>"; };
 		C3D3D6991E52294F00CA0547 /* ChangePasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordVC.m; sourceTree = "<group>"; };
 		C3D9937B1E529F56002ACBC4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3D9937D1E529F71002ACBC4 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		C3F18E351EAC9E860081B827 /* VirtualDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualDetailsVC.m; sourceTree = "<group>"; };
 		F201B3BC1E13F5640090FD5D /* FingoShop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FingoShop.entitlements; sourceTree = "<group>"; };
 		F2ACCA651E1866A90058E0E9 /* bannerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bannerCollectionViewCell.h; sourceTree = "<group>"; };
 		F2ACCA661E1866A90058E0E9 /* bannerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bannerCollectionViewCell.m; sourceTree = "<group>"; };
@@ -616,6 +634,7 @@
 		2BE668041E6698AA000DB721 /* HorizontalImages */ = {
 			isa = PBXGroup;
 			children = (
+				C30C84961EAA7782008AEC9E /* virtual_shopping.png */,
 				2BE668051E6698CA000DB721 /* arts_icon.png */,
 				2BE668061E6698CA000DB721 /* beauty_icon.png */,
 				2BE668071E6698CA000DB721 /* crazy_icon.png */,
@@ -856,6 +875,7 @@
 		BE21AF1B1D382CD700DB8E96 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C30C84981EAA7808008AEC9E /* VirtualShopping */,
 				BEADDCF91D43CC21005839A9 /* AppDelegate */,
 				BEADDCFA1D43CC2F005839A9 /* ModelClasses */,
 				BEADDCFB1D43CC47005839A9 /* Settings */,
@@ -927,6 +947,8 @@
 				2B980CBE1E52BCEA00CC7747 /* SignupViewController.m */,
 				82F191421D3E42520026CD78 /* ForgotpwdViewController.h */,
 				82F191431D3E42520026CD78 /* ForgotpwdViewController.m */,
+				C37953D61EB1840D005FADEC /* OTPViewController.h */,
+				C37953D71EB1840D005FADEC /* OTPViewController.m */,
 			);
 			name = "Login&signup";
 			sourceTree = "<group>";
@@ -1268,6 +1290,8 @@
 		BED54D441D267B9F003F33E8 /* New Images */ = {
 			isa = PBXGroup;
 			children = (
+				C30E8E131EAE7292005BADDB /* ic_vs.png */,
+				C30C849C1EAA7DC2008AEC9E /* vs_bg.jpg */,
 				2BE668041E6698AA000DB721 /* HorizontalImages */,
 				BEF8A6391D6E2A780078F19F /* SplashScreens */,
 				BE0050571D6B8A38009DD6A4 /* fs_flash_scrn5.png */,
@@ -1328,6 +1352,19 @@
 				BEF8A63D1D6E2A980078F19F /* splash_screen_xxhdpi.png */,
 			);
 			name = SplashScreens;
+			sourceTree = "<group>";
+		};
+		C30C84981EAA7808008AEC9E /* VirtualShopping */ = {
+			isa = PBXGroup;
+			children = (
+				C30C84991EAA7873008AEC9E /* VirtualShoppingVC.h */,
+				C30C849A1EAA7873008AEC9E /* VirtualShoppingVC.m */,
+				C30C849E1EAA81BB008AEC9E /* VirtualDetailsVC.h */,
+				C3F18E351EAC9E860081B827 /* VirtualDetailsVC.m */,
+				C30C84A11EAA892E008AEC9E /* SelectCategoryVC.h */,
+				C30C84A21EAA892E008AEC9E /* SelectCategoryVC.m */,
+			);
+			name = VirtualShopping;
 			sourceTree = "<group>";
 		};
 		F63E3C6ADCF748D35DA88F37 /* Pods */ = {
@@ -1505,9 +1542,11 @@
 				2BFFEE6D1DB8E96E0041B02D /* filter_30.png in Resources */,
 				BAB0274C1D38EB3B00A1F103 /* RATableViewCell.xib in Resources */,
 				4C6726041D2456BF002F669B /* ic_my profile_1x.png in Resources */,
+				C30C849D1EAA7DC2008AEC9E /* vs_bg.jpg in Resources */,
 				2BF7815D1DC8729000ADD5CD /* minus.png in Resources */,
 				2BE668101E6698CA000DB721 /* beauty_icon.png in Resources */,
 				BE21AF101D381F4C00DB8E96 /* mastercard.png in Resources */,
+				C30C84971EAA7782008AEC9E /* virtual_shopping.png in Resources */,
 				2BE668121E6698CA000DB721 /* elec_app_icon.png in Resources */,
 				2BE668131E6698CA000DB721 /* electronics_icon.png in Resources */,
 				BE7392B41D70CA7E00B79E05 /* OrdersListCell.xib in Resources */,
@@ -1517,6 +1556,7 @@
 				4C67260B1D24595E002F669B /* ic_cart_1x.png in Resources */,
 				4CFF7E8E1D1E96AC006B1780 /* WirelessMouse.jpg in Resources */,
 				BE21AF0F1D381F4C00DB8E96 /* credit card_30x-03.png in Resources */,
+				C30E8E141EAE7292005BADDB /* ic_vs.png in Resources */,
 				7BB6C1231D36A5F50022A7FB /* fb.png in Resources */,
 				2BE668181E6698CA000DB721 /* women_acc_icon.png in Resources */,
 				BEF8A63E1D6E2A980078F19F /* splash_screen_hdpi.png in Resources */,
@@ -1667,6 +1707,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C30C849B1EAA7873008AEC9E /* VirtualShoppingVC.m in Sources */,
 				2BBCF8EB1E7A96A600F3283E /* ReachabilityTM.m in Sources */,
 				C3D993801E52A36A002ACBC4 /* ChangePasswordVC.m in Sources */,
 				BE48642C1D3AADD500652AFC /* ShippingDetailsViewController.m in Sources */,
@@ -1695,10 +1736,12 @@
 				BE7506181D39691D00CA0C99 /* RATreeView.m in Sources */,
 				BEA6FBD51D6F8AE600EB8401 /* iOSDefaultActivityIndicator.m in Sources */,
 				82B40DD71D70450D008198A4 /* MyOrdersCell.m in Sources */,
+				C3F18E361EAC9E860081B827 /* VirtualDetailsVC.m in Sources */,
 				7B3BF9E81D35480E00F7FF26 /* ComplexMainTableViewCell.m in Sources */,
 				82C98F7B1D634D840046AF72 /* ChoicePaymentViewController.m in Sources */,
 				BE75061B1D39691D00CA0C99 /* RATableView.m in Sources */,
 				7BB6C1001D3664500022A7FB /* LoginViewController.m in Sources */,
+				C37953D81EB1840D005FADEC /* OTPViewController.m in Sources */,
 				BE9B85451D2E4F9D00233BA4 /* SDImageCache.m in Sources */,
 				A66319BB1D6CBD88009A1EC9 /* ShippingMethodViewController.m in Sources */,
 				2B980CBF1E52BCEA00CC7747 /* SignupViewController.m in Sources */,
@@ -1732,6 +1775,7 @@
 				4CFF7EB41D1EB432006B1780 /* METransitions.m in Sources */,
 				BE9B85511D2E4F9D00233BA4 /* UIView+WebCacheOperation.m in Sources */,
 				A66319BE1D6CD4A7009A1EC9 /* SettingsNewViewController.m in Sources */,
+				C30C84A31EAA892E008AEC9E /* SelectCategoryVC.m in Sources */,
 				4CFF7E541D1E964D006B1780 /* main.m in Sources */,
 				82B40DCE1D704481008198A4 /* DetailMyOrdersNewViewController.m in Sources */,
 				BE9B854E1D2E4F9D00233BA4 /* UIImage+MultiFormat.m in Sources */,

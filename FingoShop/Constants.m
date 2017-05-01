@@ -29,6 +29,7 @@ NSMutableDictionary* _selectedProductDict;
 NSString* _WSServiceType;
 
 NSString* _backNavigationName;
+NSString* _backNavigationName1;
 
 @implementation Constants
 

@@ -16,7 +16,7 @@
 @interface OffersViewController ()
 {
     NSMutableArray *offersArray;
-    UIBarButtonItem *AP_barbutton2,*AP_barbutton3;
+    UIBarButtonItem *AP_barbutton2,*AP_barbutton3,*AP_barbutton4;
 }
 @property (nonatomic,retain)NSArray *bannerarr;
 @property (weak, nonatomic) IBOutlet UITableView *tblOffers;
@@ -67,8 +67,16 @@
     AP_barbutton3 = [[UIBarButtonItem alloc] initWithCustomView:aaButton3];
     [aaButton3 addTarget:self action:@selector(btnSearchClicked:) forControlEvents:UIControlEventTouchUpInside];
     
+    UIImage *abuttonImage4 = [UIImage imageNamed:@"ic_vs.png"];
+    UIButton *aaButton4 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aaButton4 setImage:abuttonImage4 forState:UIControlStateNormal];
+    aaButton4.frame = CGRectMake(0.0, 0.0, 36.0, 36.0);
+    AP_barbutton4 = [[UIBarButtonItem alloc] initWithCustomView:aaButton4];
+    [aaButton4 addTarget:self action:@selector(btnVirtualShopping:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:AP_barbutton2,AP_barbutton3, nil];
+    [NSArray arrayWithObjects:AP_barbutton2,AP_barbutton4,AP_barbutton3,nil];
     
     
 }
@@ -96,6 +104,14 @@
     else {
         AP_barbutton2.badgeValue = 0;
     }
+    
+}
+
+-(void)btnVirtualShopping:(id)sender
+{
+    
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VirtualShoppingVC"];
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

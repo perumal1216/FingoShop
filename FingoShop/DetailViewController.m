@@ -20,7 +20,7 @@
 #import "UIBarButtonItem+Badge.h"
 #import "Constants.h"
 #import "ProductDetailNewVC.h"
-
+#import "VirtualDetailsVC.h"
 
 
 #define IS_IPHONE5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
@@ -35,7 +35,7 @@
     NSMutableArray *boolArray;
     NSInteger indexVal;
     NSInteger selectedindexVal;
-    UIBarButtonItem *AP_barbutton1,*AP_barbutton2,*AP_barbutton3;
+    UIBarButtonItem *AP_barbutton1,*AP_barbutton2,*AP_barbutton3,*AP_barbutton4;
     NSDictionary *selectedProduct;
     
 }
@@ -49,6 +49,7 @@
 @end
 
 @implementation DetailViewController
+@synthesize navigationFlag;
 AppDelegate *apdl_detail;
 
 - (void)viewDidLoad
@@ -136,8 +137,16 @@ AppDelegate *apdl_detail;
     AP_barbutton3 = [[UIBarButtonItem alloc] initWithCustomView:aaButton3];
     [aaButton3 addTarget:self action:@selector(btnSearchClicked:) forControlEvents:UIControlEventTouchUpInside];
     
+    UIImage *abuttonImage4 = [UIImage imageNamed:@"ic_vs.png"];
+    UIButton *aaButton4 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aaButton4 setImage:abuttonImage4 forState:UIControlStateNormal];
+    aaButton4.frame = CGRectMake(0.0, 0.0, 36.0, 36.0);
+    AP_barbutton4 = [[UIBarButtonItem alloc] initWithCustomView:aaButton4];
+    [aaButton4 addTarget:self action:@selector(btnVirtualShopping:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:AP_barbutton2,AP_barbutton3, nil];
+    [NSArray arrayWithObjects:AP_barbutton2,AP_barbutton4,AP_barbutton3,nil];
     
     
     
@@ -282,9 +291,29 @@ AppDelegate *apdl_detail;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if ([navigationFlag isEqualToString:@"Men"] ||[navigationFlag isEqualToString:@"Women"] ) {
+        
+        navigationFlag = @"";
+        
+        selectedProduct = [_itemsListArr objectAtIndex:indexPath.row];
+        [self callVirtualDetailsService:[selectedProduct objectForKey:@"entity_id"]];
+        
+        NSData *dataSave = [NSKeyedArchiver archivedDataWithRootObject:selectedProduct];
+        [[NSUserDefaults standardUserDefaults] setObject:dataSave forKey:@"SelectedProduct"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+   // [[NSUserDefaults standardUserDefaults] setObject:selectedProduct forKey:@"SelectedProduct"];
+              //  [[NSUserDefaults standardUserDefaults] synchronize];
+
+        
+    }
+    else
+    {
+    
     [self callProductDetailsService:[[_itemsListArr objectAtIndex:indexPath.row] objectForKey:@"entity_id"]];
     selectedProduct = [_itemsListArr objectAtIndex:indexPath.row];
     NSLog(@"selected product is %@",selectedProduct);
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -300,8 +329,6 @@ AppDelegate *apdl_detail;
         mvc.productDetailsDict = [selectedProduct mutableCopy];
         mvc.productDetailsDict1 = [_selectedProductDict mutableCopy];
     }
-    
-    
     
 }
 
@@ -430,6 +457,13 @@ AppDelegate *apdl_detail;
     }
     
 }
+-(void)btnVirtualShopping:(id)sender
+{
+    
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VirtualShoppingVC"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 
 - (void)btnSearchClicked:(id)sender
 {
@@ -535,6 +569,19 @@ AppDelegate *apdl_detail;
 }
 
 #pragma  mark - ServiceConnection Methods
+
+-(void)callVirtualDetailsService :(NSString *)ProductId
+{
+    
+    [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack]; // Progress
+    
+    serviceConn = [[ServiceConnection alloc]init];
+    serviceConn.delegate = self;
+    serviceType=@"Virtual_Shopping";
+    [serviceConn GetVirtualImage:ProductId];
+    
+}
+
 
 -(void)callProductListService :(NSString *)CategoryId
 {
@@ -792,15 +839,50 @@ AppDelegate *apdl_detail;
     }
     else if ([serviceType isEqualToString:@"Details"]) {
         
+        
         _selectedProductDict = [jsonDict mutableCopy];
+        
+        
         NSArray *attributeArr = (NSArray *)[_selectedProductDict objectForKey:@"configurable_attributes"];
-        if ([attributeArr count]>0) {
+        
+     /*    if ([attributeArr count] == 0 || [attributeArr count] == 2) {
+            [self performSegueWithIdentifier:@"ProductDetail" sender:self];
+        }else{
+            
+             [self performSegueWithIdentifier:@"ProductDetail1" sender:self];
+        }
+      */
+        
+       if ([attributeArr count]>0) {
             [self performSegueWithIdentifier:@"ProductDetail1" sender:self];
             
         }
         else {
             [self performSegueWithIdentifier:@"ProductDetail" sender:self];
         }
+       
+      
+    }
+    else if ([serviceType isEqualToString:@"Virtual_Shopping"]){
+        
+        
+        
+        for (UIViewController *controller in self.navigationController.viewControllers)
+        {
+            if ([controller isKindOfClass:[VirtualDetailsVC class]])
+            {
+                
+                NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+                [notificationCenter postNotificationName:@"virtualShopping"
+                                                  object:nil
+                                                userInfo:jsonDict];
+                
+                [self.navigationController popToViewController:controller animated:YES];
+                
+                break;
+            }
+        }
+        
     }
     
     [SVProgressHUD dismiss];

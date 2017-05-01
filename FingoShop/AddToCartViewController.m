@@ -28,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblItemTotal;
 @property (weak, nonatomic) IBOutlet UILabel *lblDiscount;
 @property (weak, nonatomic) IBOutlet UILabel *lblTotal;
+@property (weak, nonatomic) IBOutlet UILabel *lblShippingCharges;
+@property (weak, nonatomic) IBOutlet UILabel *lblPointsUsed;
 @property (weak, nonatomic) IBOutlet UITextField *txtfldCouponCode;
 
 @end
@@ -40,14 +42,18 @@
     
     cartInfoArray = [[NSMutableArray alloc] init];
     
-    [self callGetCartInfoService];
+   /* [self callGetCartInfoService];
     [self checkItemsInCart];
     [self.tblCart reloadData];
+    
+    */
     
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [self callGetCartInfoService];
+    [self checkItemsInCart];
+   [self.tblCart reloadData];
     
 }
 
@@ -434,6 +440,8 @@
         cartInfoArray = [[itemsDict objectForKey:@"cart_items"] mutableCopy];
         _lblItemTotal.text = [NSString stringWithFormat:@"₹ %@",[itemsTotal objectForKey:@"subtotal"]];
         _lblTotal.text = [NSString stringWithFormat:@"₹ %@",[itemsTotal objectForKey:@"grandtotal"]];
+        _lblShippingCharges.text = [NSString stringWithFormat:@"₹ %@",[itemsTotal objectForKey:@"shipping"]];
+        _lblPointsUsed.text = [NSString stringWithFormat:@"₹ %@",[itemsTotal objectForKey:@"point_used"]];
         
         if ([[NSString stringWithFormat:@"%@",[itemsTotal objectForKey:@"discount"]] isEqualToString:@""]) {
             _lblDiscount.text = [NSString stringWithFormat:@"₹ 0"];

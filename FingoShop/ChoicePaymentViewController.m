@@ -50,11 +50,30 @@
     
     NSLog(@"shippingInfo %@",shippingInfo);
     
+    shippingdict=[shippingInfo objectForKey:@"shippingAddress"];
     
-    _paymentTypesArray = @[@"Net Banking",
-                           @"Credit Card",
-                           @"Debit Card",
-                           @"Cash on Delivery"];
+    NSString *total = [NSString stringWithFormat:@"%@",[shippingdict objectForKey:@"grand_total"]];
+    
+    double grand_total = [total doubleValue];
+    
+    if (grand_total > 2000) {
+        _paymentTypesArray = @[@"Net Banking",
+                               @"Credit Card",
+                               @"Debit Card"];
+        
+    }
+    else{
+        
+        _paymentTypesArray = @[@"Net Banking",
+                               @"Credit Card",
+                               @"Debit Card",
+                               @"Cash on Delivery"];
+    }
+    
+    
+    
+    
+   
 
 
     

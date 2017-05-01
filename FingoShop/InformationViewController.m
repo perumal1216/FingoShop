@@ -164,30 +164,10 @@
         
         if ([_txtfldZipCode.text length] == 6) {
             
-            if ( [_txtfldMobileNo.text length] == 10) {
-                
-                if ([type isEqualToString:@"Edit"]) {
-                    [self callUpdateAddressService];
-                    
-                }
-                else {
-                    [self callAddAddressService];
-                }
-            }
-            else{
-                
-                
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"Please Enter Valid MobileNumber"] preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAcion)
-                                     {
-                                         
-                                     }];
-                [alertController addAction:ok];
-                
-                [self presentViewController:alertController animated:YES completion:nil];
-                
-            }
+            
+            [self callCashOnDeliveryAvailability:_txtfldZipCode.text];
+            
+
             
             
         }
@@ -198,6 +178,7 @@
             UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAcion)
             {
                 
+                [_txtfldZipCode becomeFirstResponder];
             }];
             [alertController addAction:ok];
             
@@ -220,6 +201,18 @@
 }
 
 
+-(void)callCashOnDeliveryAvailability :(NSString *)pinCode
+{
+    [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack]; // Progress
+    
+    serviceconn = [[ServiceConnection alloc]init];
+    serviceconn.delegate = self;
+    ServiceType=@"CashOnDelivery";
+    
+    [serviceconn cashOnDeliveyAvailability:pinCode];
+}
+
+
 -(void)callAddAddressService
 {
     [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack]; // Progress
@@ -232,6 +225,7 @@
     NSLog(@"post string is : %@",poststr);
     serviceconn = [[ServiceConnection alloc]init];
     serviceconn.delegate = self;
+   ServiceType=@"addAddress";
     [serviceconn AddAddress:poststr];
 
     
@@ -251,10 +245,39 @@
     
     serviceconn = [[ServiceConnection alloc]init];
     serviceconn.delegate = self;
+    ServiceType=@"updateAddress";
     [serviceconn UpdateAddress:poststr];
 
 }
 
+-(void) validationHandlerMethod
+{
+    if ( [_txtfldMobileNo.text length] == 10) {
+        
+        if ([type isEqualToString:@"Edit"]) {
+            [self callUpdateAddressService];
+            
+        }
+        else {
+            [self callAddAddressService];
+        }
+    }
+    else{
+        
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"Please Enter Valid MobileNumber"] preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAcion)
+                             {
+                                 [_txtfldMobileNo becomeFirstResponder];
+                                 
+                             }];
+        [alertController addAction:ok];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+    }
+}
 
 
 
@@ -263,21 +286,71 @@
 - (void)jsonData:(NSDictionary *)jsonDict
 {
     
+     if([ServiceType isEqualToString:@"CashOnDelivery"])
+    {
+//
+    
+        NSString *message =[jsonDict objectForKey:@"message"];
+        
+        message = [message stringByReplacingOccurrencesOfString:@"<br/>"
+                                                     withString:@"  "];
+        
+        
+        if  ([message isEqualToString:@"We do not deliver to this location."])
+        {
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:message preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+            [alertController addAction:ok];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            NSLog(@"%@",jsonDict);
+            
+           
+        }
+        else{
+            
+            
+            [self validationHandlerMethod];
+            
+        }
+        
+       
+        
+         [SVProgressHUD dismiss];
+        
+        
+        
+        
+    }
+    
+     else{
+    
+    
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Fingoshop" message:[jsonDict objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction*alertaction){
         
-         [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
         
     }];
     
     [alertController addAction:ok];
     
     [self presentViewController:alertController animated:YES completion:nil];
+         
+         [SVProgressHUD dismiss];
+    
+     }
+    
     
    
     
-    [SVProgressHUD dismiss];
+   
+    
+   
     
 }
 

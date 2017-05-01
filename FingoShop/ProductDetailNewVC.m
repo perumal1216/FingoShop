@@ -25,15 +25,26 @@
     NSArray *productsArr;
     NSMutableArray *productGalleryArr;
     NSMutableDictionary *productOtherDetail;
-    UIBarButtonItem *AP_barbutton2,*AP_barbutton1;
+    UIBarButtonItem *AP_barbutton2,*AP_barbutton1,*AP_barbutton4;
     NSMutableArray *sizesArray;
     NSArray *sizeKeysArr;
     NSInteger sizeIndexVal;
     NSString *selectedSize;
     NSString *optionID;
     int quantity;
+    
+    
+    NSString *optionColorID;
+    NSArray *sizesColorArray;
+    NSMutableArray *sizesArray1;
+    NSString *CompareString;
+    NSInteger sizeIndexVal1;
+    NSString *selectedSize1;
+    
+    NSString *super_attributeStr;
 }
 @property (weak, nonatomic) IBOutlet UILabel *lblSimilarProducts;
+@property (weak, nonatomic) IBOutlet UIButton *colorButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblSeller;
@@ -101,12 +112,53 @@ AppDelegate *apdl_product1;
     _lblSizeStatic.clipsToBounds = YES;
     _lblSizeDynamic.hidden = YES;
     
+    _colorButton.layer.borderWidth = 1;
+    _colorButton.layer.cornerRadius = 2;
+    _colorButton.layer.borderColor = [[UIColor blackColor] CGColor];
+    
 //    sizesArray = @[@"S",@"M",@"L",@"XL",@"XXL"];
     sizesArray = [NSMutableArray new];
+    sizesArray1 = [NSMutableArray new];
     NSArray *tempArr = [[_selectedProductDict objectForKey:@"configurable_attributes"] allKeys];
-    optionID = [tempArr objectAtIndex:0];
+    
+   
+    if ([tempArr count] >1) {
+        
+        
+        NSString *optionidCompare = [NSString stringWithFormat:@"%@",[tempArr objectAtIndex:0]];
+        
+        if ([optionidCompare isEqualToString:@"134"]) {
+            
+            optionColorID = [tempArr objectAtIndex:0];
+            optionID = [tempArr objectAtIndex:1];
+            
+        }
+        else{
+            optionColorID = [tempArr objectAtIndex:1];
+            optionID = [tempArr objectAtIndex:0];
+        }
+
+      //  optionColorID = [tempArr objectAtIndex:0];
+       NSDictionary *sizeDict1 = [[_selectedProductDict objectForKey:@"configurable_attributes"] objectForKey:optionColorID];
+        sizesColorArray = [sizeDict1 allKeys];
+        sizesColorArray = [sizesColorArray sortedArrayUsingSelector: @selector(compare:)];
+        for (int i=0; i< [sizesColorArray count]; i++) {
+            [sizesArray1 addObject:[sizeDict1 objectForKey:[sizesColorArray objectAtIndex:i]]];
+        }
+       // optionID = [tempArr objectAtIndex:1];
+        [_colorButton setHidden:NO];
+        super_attributeStr = @"super_attribute";
+       
+    }
+    else{
+        optionID = [tempArr objectAtIndex:0];
+        [_colorButton setHidden:YES];
+        super_attributeStr = @"";
+    }
+    
+    
     NSDictionary *sizeDict = [[_selectedProductDict objectForKey:@"configurable_attributes"] objectForKey:optionID];
-//    NSDictionary *sizeDict1 = [sizeDict objectForKey:@"options"];
+    
     sizeKeysArr = [sizeDict allKeys];
     sizeKeysArr = [sizeKeysArr sortedArrayUsingSelector: @selector(compare:)];
     for (int i=0; i< [sizeKeysArr count]; i++) {
@@ -287,8 +339,16 @@ AppDelegate *apdl_product1;
     UIBarButtonItem *AP_barbutton3 = [[UIBarButtonItem alloc] initWithCustomView:aaButton3];
     [aaButton3 addTarget:self action:@selector(btnSearchClicked:) forControlEvents:UIControlEventTouchUpInside];
     
+    UIImage *abuttonImage4 = [UIImage imageNamed:@"ic_vs.png"];
+    UIButton *aaButton4 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aaButton4 setImage:abuttonImage4 forState:UIControlStateNormal];
+    aaButton4.frame = CGRectMake(0.0, 0.0, 36.0, 36.0);
+    AP_barbutton4 = [[UIBarButtonItem alloc] initWithCustomView:aaButton4];
+    [aaButton4 addTarget:self action:@selector(btnVirtualShopping:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:AP_barbutton2,AP_barbutton3, nil];
+    [NSArray arrayWithObjects:AP_barbutton2,AP_barbutton4,AP_barbutton3,nil];
     
     [self callProductGalleryService:[_selectedProductDict objectForKey:@"entity_id"]];
     _descriptionTextView.text = [_selectedProductDict objectForKey:@"description"];
@@ -444,23 +504,35 @@ AppDelegate *apdl_product1;
     if ([[NSUserDefaults standardUserDefaults] stringForKey:@"email"] && ![[[NSUserDefaults standardUserDefaults] stringForKey:@"email"] isEqualToString:@""]) {
         
         if (selectedSize) {
-           // if (quantity > 0) {
-                //NSString *qty = [NSString stringWithFormat:@"%d",quantity];
-                [self callAddToCartService:@"1"];
-                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-                AddToCartViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Cart"];
-                [self.navigationController pushViewController:vc animated:YES];
+            
+            if ([super_attributeStr isEqualToString:@"super_attribute"] ) {
                 
-          //  }
-           /* else {
-                UIAlertController*  alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:@"Please select quantity for product" preferredStyle:UIAlertControllerStyleAlert];
-                
-                [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                if (selectedSize1) {
+                    //NSString *qty = [NSString stringWithFormat:@"%d",quantity];
+                    [self callAddToCartService:@"1"];
+                    /* UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+                     AddToCartViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Cart"];
+                     [self.navigationController pushViewController:vc animated:YES];
+                     
+                     */
                     
-                }]];
+                }
+                else {
+                    UIAlertController*  alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:@"Please select color for product" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                        
+                    }]];
+                    
+                    [self presentViewController:alertController animated:YES completion:nil];
+                }
+            }
+            else{
                 
-                [self presentViewController:alertController animated:YES completion:nil];
-            }*/
+                 [self callAddToCartService:@"1"];
+            }
+            
+            
            
         }
         else {
@@ -585,23 +657,35 @@ AppDelegate *apdl_product1;
     if ([[NSUserDefaults standardUserDefaults] stringForKey:@"email"] && ![[[NSUserDefaults standardUserDefaults] stringForKey:@"email"] isEqualToString:@""]) {
         
         if (selectedSize) {
-           // if (quantity > 0) {
-              //  NSString *qty = [NSString stringWithFormat:@"%d",quantity];
-                [self callAddToCartService:@"1"];
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-                AddToCartViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Cart"];
-                [self.navigationController pushViewController:vc animated:YES];
-               
-           /* }
-            else {
-                UIAlertController*  alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:@"Please select quantity for product" preferredStyle:UIAlertControllerStyleAlert];
+            
+            if ([super_attributeStr isEqualToString:@"super_attribute"] ) {
                 
-                [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                if (selectedSize1) {
+                    //NSString *qty = [NSString stringWithFormat:@"%d",quantity];
+                    [self callAddToCartService:@"1"];
+                    /* UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+                     AddToCartViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Cart"];
+                     [self.navigationController pushViewController:vc animated:YES];
+                     
+                     */
                     
-                }]];
+                }
+                else {
+                    UIAlertController*  alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:@"Please select color for product" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                        
+                    }]];
+                    
+                    [self presentViewController:alertController animated:YES completion:nil];
+                }
+            }
+            else{
                 
-                [self presentViewController:alertController animated:YES completion:nil];
-            }*/
+                [self callAddToCartService:@"1"];
+            }
+            
+            
             
         }
         else {
@@ -654,6 +738,34 @@ AppDelegate *apdl_product1;
 
     
 }
+- (IBAction)btnColorClicked:(id)sender {
+    
+    CompareString = @"ColorPicker";
+    pickerView1 = [UIPickerView new];
+    pickerView1.delegate = self;
+    pickerView1.dataSource = self;
+    pickerView1.showsSelectionIndicator = YES;
+    pickerView1.frame= CGRectMake(0,self.view.frame.size.height-250,self.view.frame.size.width,250);
+    
+    pickerView1.backgroundColor = [UIColor whiteColor];
+    
+    toolBar= [[UIToolbar alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-250,self.view.frame.size.width,44)];
+    [toolBar setBarStyle:UIBarStyleBlackOpaque];
+    
+    UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    UIBarButtonItem *barButtonTitle = [[UIBarButtonItem alloc] initWithTitle:@"Select Color"
+                                                                       style:UIBarButtonItemStylePlain target:self action:nil];
+    
+    UIBarButtonItem *barButtonDone = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                      style:UIBarButtonItemStylePlain target:self action:@selector(btnColorDoneClikced)];
+    toolBar.items = @[barButtonTitle,flexible,barButtonDone];
+    
+    barButtonDone.tintColor=[UIColor whiteColor];
+    
+    
+    [self.view addSubview: pickerView1];
+    [self.view addSubview:toolBar];
+}
 
 - (IBAction)btnCheckClicked:(id)sender {
     
@@ -684,6 +796,7 @@ AppDelegate *apdl_product1;
 }
 
 - (IBAction)btnSizeClicked:(id)sender {
+    CompareString = @"";
     
     pickerView = [UIPickerView new];
     pickerView.delegate = self;
@@ -704,7 +817,7 @@ AppDelegate *apdl_product1;
                                                                       style:UIBarButtonItemStylePlain target:self action:@selector(btnDoneClikced)];
     toolBar.items = @[barButtonTitle,flexible,barButtonDone];
     
-    barButtonDone.tintColor=[UIColor blackColor];
+    barButtonDone.tintColor=[UIColor whiteColor];
     
 
     [self.view addSubview: pickerView];
@@ -722,6 +835,17 @@ AppDelegate *apdl_product1;
     [toolBar removeFromSuperview];
     
 }
+-(void)btnColorDoneClikced
+{
+    
+    [_colorButton setTitle:[NSString stringWithFormat:@"%@",[sizesArray1 objectAtIndex:sizeIndexVal1]] forState:UIControlStateNormal];
+   
+   // _lblSizeDynamic.text = [sizesArray1 objectAtIndex:sizeIndexVal1];
+    selectedSize1 = [sizesColorArray objectAtIndex:sizeIndexVal1];
+    //_lblSizeDynamic.hidden = NO;
+    [pickerView1 removeFromSuperview];
+    [toolBar removeFromSuperview];
+}
 - (IBAction)btnBackClicked:(id)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -730,6 +854,13 @@ AppDelegate *apdl_product1;
 - (void)btnFilterClicked:(id)sender {
     UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FiltersViewController"];
     [self.navigationController pushViewController:vc animated:YES];
+}
+-(void)btnVirtualShopping:(id)sender
+{
+    
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VirtualShoppingVC"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 - (void)btnSearchClicked:(id)sender
@@ -830,16 +961,35 @@ AppDelegate *apdl_product1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return sizesArray.count;
+    
+    if ([CompareString isEqualToString:@"ColorPicker"]) {
+        return sizesArray1.count;
+    }
+    else{
+        return sizesArray.count;
+    }
+    
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-       return [sizesArray objectAtIndex:row];
+    
+    if ([CompareString isEqualToString:@"ColorPicker"]) {
+       return [sizesArray1 objectAtIndex:row];
+    }
+    else{
+        return [sizesArray objectAtIndex:row];
+    }
 }
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-    sizeIndexVal = row;
+    if ([CompareString isEqualToString:@"ColorPicker"]) {
+        sizeIndexVal1 = row;
+    }
+    else{
+        sizeIndexVal = row;
+    }
+    
 }
 
 #pragma mark - button Actions
@@ -932,7 +1082,18 @@ AppDelegate *apdl_product1;
     serviceconn = [[ServiceConnection alloc]init];
     serviceconn.delegate = self;
     ServiceType=@"AddtoCart";
-    [serviceconn AddToCart:[productDetailsDict objectForKey:@"entity_id"] qty:qty option:optionID size:selectedSize];
+    
+   /* if ([optionColorID isEqualToString:@""]) {
+        [serviceconn AddToCart:[productDetailsDict objectForKey:@"entity_id"] qty:qty option:optionID size:selectedSize];
+    }
+    else
+    {
+        
+    }
+    */
+    
+    [serviceconn AddToCart:[productDetailsDict objectForKey:@"entity_id"] qty:qty option:optionID size:selectedSize option1:optionColorID size1:selectedSize1 compareStr:super_attributeStr];
+    
 }
 
 
@@ -996,6 +1157,9 @@ AppDelegate *apdl_product1;
             //                        position:CSToastPositionTop];
             
             [self callGetCartInfoService];
+            
+            
+            
         }
         else if ([[jsonDict objectForKey:@"result"] isEqualToString:@"error"]) {
             UIAlertController * alert = [UIAlertController
@@ -1022,7 +1186,7 @@ AppDelegate *apdl_product1;
         
         NSDictionary *itemsDict = [jsonDict objectForKey:@"cart_info"];
         NSArray *cartInfoArray = [itemsDict objectForKey:@"cart_items"];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",cartInfoArray.count]  forKey:@"CartCount"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%lu",(unsigned long)cartInfoArray.count]  forKey:@"CartCount"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         AP_barbutton2.badgeValue = [[NSUserDefaults standardUserDefaults] objectForKey:@"CartCount"];
         
@@ -1030,6 +1194,11 @@ AppDelegate *apdl_product1;
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:@"Item added to cart" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+            AddToCartViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Cart"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
             
         }];
         [alert addAction:okAction];

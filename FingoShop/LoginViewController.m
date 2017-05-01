@@ -11,9 +11,8 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
-//#import "SignupViewController.h"
 #import "Constants.h"
-
+#import "SettingsNewViewController.h"
 @interface LoginViewController ()
 {
     BOOL show;
@@ -36,6 +35,8 @@
 
 @implementation LoginViewController
 AppDelegate *apdl_login;
+
+
 
 - (void)viewDidLoad {
     socialUserDict = [[NSMutableDictionary alloc] init];
@@ -339,17 +340,42 @@ didSignInForUser:(GIDGoogleUser *)user
             NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]);
             [self callGetCartInfoService];
             
-           
             
-            if ([_backNavigationName isEqualToString:@"Home"])
-            {
-                _backNavigationName = @"";
+           
+            if ([_backNavigationName1 isEqualToString:@"SendOTP"]) {
                 
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                _backNavigationName1 = @"";
+                
+                for (UIViewController *controller in self.navigationController.viewControllers)
+                {
+                    if ([controller isKindOfClass:[SettingsNewViewController class]])
+                    {
+                        
+                        [self.navigationController popToViewController:controller animated:YES];
+                        
+                        break;
+                    }
+                }
+
+                
+                
             }
             else{
-                 [self.navigationController popViewControllerAnimated:YES];
+                if ([_backNavigationName isEqualToString:@"Home"])
+                {
+                    _backNavigationName = @"";
+                    
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                }
+                else{
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+
+                
             }
+            
+           
+            
             
             
         }
@@ -436,7 +462,7 @@ didSignInForUser:(GIDGoogleUser *)user
 {
     NSDictionary *itemsDict = [jsonDict objectForKey:@"cart_info"];
     NSArray *cartInfoArray = [itemsDict objectForKey:@"cart_items"];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",cartInfoArray.count]  forKey:@"CartCount"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%lu",(unsigned long)cartInfoArray.count]  forKey:@"CartCount"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     NSLog(@"Cart Count: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CartCount"]);
     [[NSNotificationCenter defaultCenter] postNotificationName: @"loginNotification" object:nil];

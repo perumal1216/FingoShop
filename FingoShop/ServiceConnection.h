@@ -60,6 +60,7 @@
 -(void)getPaymentMethods;
 -(void)cancelOrder:(NSString*)orderID;
 -(void)GetVirtualImage:(NSString *)productId;
+-(void)GetCustomerAccount;
 
 //
 //

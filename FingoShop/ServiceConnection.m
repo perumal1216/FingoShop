@@ -441,6 +441,17 @@
 
 }
 
+-(void)GetCustomerAccount
+{
+    
+    NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/customer/getAccountInfo?SID==%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
+    
+    NSURL *url=[NSURL URLWithString:url_Method];
+    
+    [self startRequestForUrl:url];
+    
+}
+
 
 -(void)AddToCart:(NSString *)PoductID qty:(NSString *)qty
 {

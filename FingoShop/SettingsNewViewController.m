@@ -264,6 +264,57 @@
     //[self performSegueWithIdentifier:@"ChangePasswordVC" sender:self];
     
 }
+- (IBAction)myAccountButtonAction:(id)sender {
+    
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"email"] && ![[[NSUserDefaults standardUserDefaults] stringForKey:@"email"] isEqualToString:@""]) {
+        
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MyAccountVC"];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        
+    }else
+    {
+        UIAlertController*  alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:@"Login to Proceed" preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+            UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        
+    }
+}
+- (IBAction)myRewardsButtonAction:(id)sender {
+    
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"email"] && ![[[NSUserDefaults standardUserDefaults] stringForKey:@"email"] isEqualToString:@""]) {
+        
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MyRewardPointsVC"];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        
+        
+    }else
+    {
+        UIAlertController*  alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:@"Login to Proceed" preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+            UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        
+    }
+}
 
 
 

@@ -199,6 +199,8 @@
 		C30C849D1EAA7DC2008AEC9E /* vs_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C30C849C1EAA7DC2008AEC9E /* vs_bg.jpg */; };
 		C30C84A31EAA892E008AEC9E /* SelectCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C30C84A21EAA892E008AEC9E /* SelectCategoryVC.m */; };
 		C30E8E141EAE7292005BADDB /* ic_vs.png in Resources */ = {isa = PBXBuildFile; fileRef = C30E8E131EAE7292005BADDB /* ic_vs.png */; };
+		C32B2B201EB7A822009F5EC9 /* MyAccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C32B2B1F1EB7A822009F5EC9 /* MyAccountVC.m */; };
+		C32B2B231EB7A84D009F5EC9 /* MyRewardPointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C32B2B221EB7A84D009F5EC9 /* MyRewardPointsVC.m */; };
 		C37953D81EB1840D005FADEC /* OTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C37953D71EB1840D005FADEC /* OTPViewController.m */; };
 		C3A6DCB41E53FBC900D8FB5B /* KIImagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A6DCB31E53FBC900D8FB5B /* KIImagePager.m */; };
 		C3D993801E52A36A002ACBC4 /* ChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D3D6991E52294F00CA0547 /* ChangePasswordVC.m */; };
@@ -564,6 +566,10 @@
 		C30C84A11EAA892E008AEC9E /* SelectCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCategoryVC.h; sourceTree = "<group>"; };
 		C30C84A21EAA892E008AEC9E /* SelectCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCategoryVC.m; sourceTree = "<group>"; };
 		C30E8E131EAE7292005BADDB /* ic_vs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vs.png; sourceTree = "<group>"; };
+		C32B2B1E1EB7A822009F5EC9 /* MyAccountVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountVC.h; sourceTree = "<group>"; };
+		C32B2B1F1EB7A822009F5EC9 /* MyAccountVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountVC.m; sourceTree = "<group>"; };
+		C32B2B211EB7A84D009F5EC9 /* MyRewardPointsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRewardPointsVC.h; sourceTree = "<group>"; };
+		C32B2B221EB7A84D009F5EC9 /* MyRewardPointsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRewardPointsVC.m; sourceTree = "<group>"; };
 		C37953D61EB1840D005FADEC /* OTPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPViewController.h; sourceTree = "<group>"; };
 		C37953D71EB1840D005FADEC /* OTPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPViewController.m; sourceTree = "<group>"; };
 		C3A6DCB21E53FBC900D8FB5B /* KIImagePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIImagePager.h; sourceTree = "<group>"; };
@@ -696,8 +702,6 @@
 				824B79451D4776EC00FCCB3F /* FiltersViewController.m */,
 				A66319B91D6CBD88009A1EC9 /* ShippingMethodViewController.h */,
 				A66319BA1D6CBD88009A1EC9 /* ShippingMethodViewController.m */,
-				A66319BC1D6CD4A6009A1EC9 /* SettingsNewViewController.h */,
-				A66319BD1D6CD4A7009A1EC9 /* SettingsNewViewController.m */,
 				C3D3D6981E52294F00CA0547 /* ChangePasswordVC.h */,
 				C3D3D6991E52294F00CA0547 /* ChangePasswordVC.m */,
 				BEF8A6361D6E273A0078F19F /* ShippingMethodCellCell.h */,
@@ -1265,6 +1269,12 @@
 			children = (
 				BEADDCFC1D43CC7B005839A9 /* SettingsViewController.h */,
 				BEADDCFD1D43CC7B005839A9 /* SettingsViewController.m */,
+				A66319BC1D6CD4A6009A1EC9 /* SettingsNewViewController.h */,
+				A66319BD1D6CD4A7009A1EC9 /* SettingsNewViewController.m */,
+				C32B2B1E1EB7A822009F5EC9 /* MyAccountVC.h */,
+				C32B2B1F1EB7A822009F5EC9 /* MyAccountVC.m */,
+				C32B2B211EB7A84D009F5EC9 /* MyRewardPointsVC.h */,
+				C32B2B221EB7A84D009F5EC9 /* MyRewardPointsVC.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1793,6 +1803,7 @@
 				BEF8A6441D6E363D0078F19F /* PayUPaymentViewController.m in Sources */,
 				BAB0274B1D38EB3B00A1F103 /* RATableViewCell.m in Sources */,
 				BE7506211D39691D00CA0C99 /* RATreeView+Enums.m in Sources */,
+				C32B2B231EB7A84D009F5EC9 /* MyRewardPointsVC.m in Sources */,
 				4C5FB4391D1FEC3F0056902E /* DetailViewController.m in Sources */,
 				A6D418031D3B7A2600E97D81 /* UIView+Toast.m in Sources */,
 				A6FE0DCE1D3A270300FD1C6C /* NotificationViewController.m in Sources */,
@@ -1801,6 +1812,7 @@
 				BEA6FBD41D6F8AE600EB8401 /* PayUSAGetTransactionID.m in Sources */,
 				4CFF7EB71D1EB432006B1780 /* ECSlidingInteractiveTransition.m in Sources */,
 				7B3BF9E01D35410200F7FF26 /* YUTableViewItem.m in Sources */,
+				C32B2B201EB7A822009F5EC9 /* MyAccountVC.m in Sources */,
 				2BF5A2F81DBBA472006BC8E3 /* ProductDetailNewVC.m in Sources */,
 				A6FE0DD41D3A37AD00FD1C6C /* OffersViewController.m in Sources */,
 				BAB0274A1D38EB3B00A1F103 /* RADataObject.m in Sources */,

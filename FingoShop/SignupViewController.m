@@ -149,7 +149,7 @@
     {
         alertController = [UIAlertController alertControllerWithTitle:@"Fingoshop" message:@"Please enter all the details" preferredStyle:UIAlertControllerStyleAlert];
         
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             // [self closeAlertview];
         }]];
         

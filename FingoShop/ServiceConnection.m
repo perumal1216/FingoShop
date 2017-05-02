@@ -453,6 +453,21 @@
 }
 
 
+-(void)UpdateAccountDetails:(NSString *)post
+{
+    
+    NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/customer/setAccountInfo?SID=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
+
+    
+    
+    NSURL *url=[NSURL URLWithString:url_Method];
+    
+    [self postRequestForUrl:url postBody:post];
+    
+    
+}
+
+
 -(void)AddToCart:(NSString *)PoductID qty:(NSString *)qty
 {
     NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/cart/add?SID=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];

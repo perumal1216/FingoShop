@@ -61,6 +61,7 @@
 -(void)cancelOrder:(NSString*)orderID;
 -(void)GetVirtualImage:(NSString *)productId;
 -(void)GetCustomerAccount;
+-(void)UpdateAccountDetails:(NSString *)post;
 
 //
 //

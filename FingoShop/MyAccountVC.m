@@ -43,8 +43,25 @@
 }
 
 - (IBAction)saveButtonAction:(id)sender {
+    
+    
+    
+    [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack]; // Progress
+    
+    seviceconn = [[ServiceConnection alloc]init];
+    seviceconn.delegate = self;
+    serviceType = @"SetAccountInfo";
+    
+    NSString *post = [NSString stringWithFormat:@"firstname=%@&lastname=%@&mobile=%@",_first_nameTF.text,_last_nameTF.text,_mobile_TF.text];
+    [seviceconn UpdateAccountDetails:post];
+    
+    
+    
 }
 - (IBAction)changePasswordButtonAction:(id)sender {
+    
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordVC"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -83,7 +100,24 @@
             
             
        }
-        else {
+        else if ([serviceType isEqualToString:@"SetAccountInfo"])
+        {
+//            if (![[jsonDict objectForKey:@"status"] isEqualToString:@"FAIL"] ) {
+//                
+//                
+//            }
+//            
+//            else{
+            
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[jsonDict objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                [alertController addAction:ok];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+          //  }
+            
     
         }
         

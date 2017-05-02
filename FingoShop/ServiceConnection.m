@@ -440,6 +440,17 @@
     [self startRequestForUrl:url];
 
 }
+-(void)GetPointsBalance
+{
+    
+    NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/cart/getPointBalance?SID=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
+    
+    NSURL *url=[NSURL URLWithString:url_Method];
+    
+    [self startRequestForUrl:url];
+    
+}
+
 
 -(void)GetCustomerAccount
 {

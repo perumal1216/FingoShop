@@ -62,6 +62,7 @@
 -(void)GetVirtualImage:(NSString *)productId;
 -(void)GetCustomerAccount;
 -(void)UpdateAccountDetails:(NSString *)post;
+-(void)GetPointsBalance;
 
 //
 //

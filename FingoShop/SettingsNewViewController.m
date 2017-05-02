@@ -154,13 +154,15 @@
 
 -(void)viewWillAppear:(BOOL)animated {
      [self CheckCart];
+    [_changePswdButton setHidden:true];
+    [_changedPswdLabel setHidden:true];
     if ([[NSUserDefaults standardUserDefaults] stringForKey:@"email"] && ![[[NSUserDefaults standardUserDefaults] stringForKey:@"email"] isEqualToString:@""]) {
         self.lblUserName.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"name"];
 
         [_btnSignOut setTitle:@"Sign Out" forState:UIControlStateNormal];
         type = @"LOGOUT";
-        [_changePswdButton setHidden:false];
-        [_changedPswdLabel setHidden:false];
+       // [_changePswdButton setHidden:false];
+       // [_changedPswdLabel setHidden:false];
         [_lblUserName setHidden:false];
         [_userImageView setHidden:true];
         
@@ -170,8 +172,8 @@
         self.lblUserName.text = @"Guest";
         [_btnSignOut setTitle:@"Sign In" forState:UIControlStateNormal];
         type = @"LOGIN";
-        [_changePswdButton setHidden:true];
-        [_changedPswdLabel setHidden:true];
+      //  [_changePswdButton setHidden:true];
+       // [_changedPswdLabel setHidden:true];
         [_lblUserName setHidden:true];
         [_userImageView setHidden:false];
 

@@ -8,6 +8,7 @@
 
 #import "VirtualShoppingVC.h"
 #import "VirtualDetailsVC.h"
+#import <QuartzCore/QuartzCore.h>
 @interface VirtualShoppingVC ()
 {
     NSArray *addImages;
@@ -29,9 +30,7 @@
     UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchWithGestureRecognizer:)];
     [self.view addGestureRecognizer:pinchGestureRecognizer];
     self.movingView.hidden=true;
-    
-    imageArray =[[NSMutableArray alloc]init];
-    addImages = [[NSArray alloc]initWithObjects:@"111.jpg",@"22.jpg",@"33.jpg", nil];
+
     
     
     flag = 0 ;

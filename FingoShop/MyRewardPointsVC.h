@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServiceConnection.h"
 
-@interface MyRewardPointsVC : UIViewController
+@interface MyRewardPointsVC : UIViewController<ServiceConnectionDelegate>
+{
+    ServiceConnection *seviceconn;
+}
+@property (strong, nonatomic) IBOutlet UILabel *balanceLabel;
 
 @end

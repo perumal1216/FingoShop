@@ -13,6 +13,7 @@
 #import "SVProgressHUD.h"
 #import "ProductDetailVC.h"
 #import "ProductDetailNewVC.h"
+#import <QuartzCore/QuartzCore.h>
 @interface VirtualDetailsVC ()
 {
     NSArray *addImages;

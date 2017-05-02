@@ -64,7 +64,12 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-
+#pragma mark - ServiceConnection Delegate Methods
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+   	return YES;
+}
 
 #pragma mark - ServiceConnection Delegate Methods
 

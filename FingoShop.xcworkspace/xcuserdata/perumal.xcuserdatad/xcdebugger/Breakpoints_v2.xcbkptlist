@@ -287,7 +287,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "566"
             endingLineNumber = "566"
-            landmarkName = "-UpdateCartWithItemId:andQuantity:"
+            landmarkName = "-ApplyCoupon:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -303,7 +303,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "570"
             endingLineNumber = "570"
-            landmarkName = "-UpdateCartWithItemId:andQuantity:"
+            landmarkName = "-ApplyCoupon:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -927,7 +927,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "539"
             endingLineNumber = "539"
-            landmarkName = "-GetCartInfo"
+            landmarkName = "-AddToCart:qty:option:size:option1:size1:compareStr:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1087,7 +1087,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "488"
             endingLineNumber = "488"
-            landmarkName = "-AddToCart:qty:option:size:option1:size1:compareStr:"
+            landmarkName = "-AddToCart:qty:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1231,7 +1231,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "473"
             endingLineNumber = "473"
-            landmarkName = "-AddToCart:qty:"
+            landmarkName = "-UpdateAccountDetails:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1423,7 +1423,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "538"
             endingLineNumber = "538"
-            landmarkName = "-GetCartInfo"
+            landmarkName = "-AddToCart:qty:option:size:option1:size1:compareStr:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2015,8 +2015,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
             endingLineNumber = "73"
-            landmarkName = "-jsonData:"
-            landmarkType = "7">
+            landmarkName = "@implementation MyAccountVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2031,7 +2031,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
             endingLineNumber = "71"
-            landmarkName = "-jsonData:"
+            landmarkName = "-textFieldShouldReturn:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2047,7 +2047,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "449"
             endingLineNumber = "449"
-            landmarkName = "-GetCustomerAccount"
+            landmarkName = "-GetPointsBalance"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2063,7 +2063,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "451"
             endingLineNumber = "451"
-            landmarkName = "-GetCustomerAccount"
+            landmarkName = "-GetPointsBalance"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -8,7 +8,7 @@
 
 #import "InformationViewController.h"
 #import "SVProgressHUD.h"
-
+#define ACCEPTABLE_CHARECTERS @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 @interface InformationViewController ()
 {
     CGRect actualSize1;
@@ -67,6 +67,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - Textfiled Delegate
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if(textField)
@@ -112,7 +115,22 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     
-     if (textField == self.txtfldZipCode)
+    if (textField == self.txtfldFirstName ||textField == self.txtfldLastName || textField == self.txtfldCity) {
+        NSCharacterSet *acceptedInput = [NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARECTERS];
+        if ([string isEqualToString:@""])
+        {
+            return YES;
+        }
+        
+       else if (!([[string componentsSeparatedByCharactersInSet:acceptedInput] count] > 1)){
+            NSLog(@"not allowed");
+            return NO;
+        }
+        else{
+            return YES;
+        }
+    }
+    else if (textField == self.txtfldZipCode)
      {
          NSInteger oldLength = [textField.text length];
          NSInteger newLength = oldLength + [string length] - range.length;
@@ -140,11 +158,14 @@
      else{
           return YES;
      }
+    
+    
 
     
     
 }
 
+#pragma mark - Button Actions
 
 
 - (IBAction)btnBackClicked:(id)sender

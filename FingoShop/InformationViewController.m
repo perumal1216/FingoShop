@@ -117,13 +117,20 @@
     
     if (textField == self.txtfldFirstName ||textField == self.txtfldLastName || textField == self.txtfldCity) {
         NSCharacterSet *acceptedInput = [NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARECTERS];
-        if ([string isEqualToString:@""])
+        if ([string isEqualToString:@""] || [string isEqualToString:@" "])
         {
             return YES;
         }
         
        else if (!([[string componentsSeparatedByCharactersInSet:acceptedInput] count] > 1)){
             NSLog(@"not allowed");
+           
+           UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Fingoshop" message:@"Not allowed any special characters and numeric numbers" preferredStyle:UIAlertControllerStyleAlert];
+           
+           UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+           [alertController addAction:ok];
+           
+           [self presentViewController:alertController animated:YES completion:nil];
             return NO;
         }
         else{

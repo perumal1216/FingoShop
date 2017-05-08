@@ -141,7 +141,7 @@
 //    _countLabel.center = CGPointMake(15, _imageCounterBackground.frame.size.height/2);
 //    [_imageCounterBackground addSubview:_countLabel];
 
-    if(!_imageCounterDisabled) [self addSubview:_imageCounterBackground];
+   // if(!_imageCounterDisabled) [self addSubview:_imageCounterBackground];
 }
 
 - (void) initializeCaption
@@ -154,7 +154,7 @@
     _captionLabel.alpha = 0.7f;
     _captionLabel.layer.cornerRadius = 5.0f;
 
-   // [self addSubview:_captionLabel];
+   //[self addSubview:_captionLabel];
 }
 
 - (void) reloadData

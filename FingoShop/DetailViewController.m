@@ -162,27 +162,28 @@ AppDelegate *apdl_detail;
     }
     else {
         
+        [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack];
         // Dispatch a block of code to a background queue
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
         dispatch_async(queue, ^{
             // Do initialisation in the background
-            dispatch_sync(dispatch_get_main_queue(), ^{
+            /*dispatch_sync(dispatch_get_main_queue(), ^{
                 // Set progress indicator to complete?
                 [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack];
             });
             
+            */
             
-            
-            [self callProductListService:_WSConstSelectedCategoryID];
-            
+        
             //  NSLog(@" call product list:%@",   )
             
             NSLog(@"selected category id:%@", _WSConstSelectedCategoryID);
             // Call back to the main queue if you want to update any UI when you are done
             dispatch_sync(dispatch_get_main_queue(), ^{
+            [self callProductListService:_WSConstSelectedCategoryID];
                 // Set progress indicator to complete?
-                [SVProgressHUD dismiss];
                 [_Detail_collecVW reloadData];
+                [SVProgressHUD dismiss];
             });
         });
     }

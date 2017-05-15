@@ -16,7 +16,7 @@
 #import <QuartzCore/QuartzCore.h>
 @interface VirtualDetailsVC ()
 {
-    NSArray *addImages;
+   
     bool flagVal;
     NSDictionary * selectedProduct;
     CGFloat lastRotation;
@@ -48,9 +48,11 @@
     [self.bagRoundImage addGestureRecognizer:pinchGestureRecognizer];
     self.bagRoundImage.userInteractionEnabled = YES;
     self.movingView.hidden=true;
+    self.movingView.contentMode = UIViewContentModeCenter;
+    self.bagRoundImage.contentMode = UIViewContentModeCenter;
     self.bagRoundImage.image = bag_Image;
     imageArray =[[NSMutableArray alloc]init];
-    addImages = [[NSArray alloc]initWithObjects:@"111.jpg",@"22.jpg",@"33.jpg", nil];
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageEditingMethod:) name:@"virtualShopping" object:nil];
     

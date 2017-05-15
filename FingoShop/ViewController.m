@@ -718,7 +718,7 @@ AppDelegate *apdl;
 
 - (UIViewContentMode) contentModeForImage:(NSUInteger)image inPager:(KIImagePager *)pager
 {
-    return UIViewContentModeScaleAspectFill;
+    return UIViewContentModeScaleToFill;
 }
 
 //- (NSString *) captionForImageAtIndex:(NSUInteger)index inPager:(KIImagePager *)pager

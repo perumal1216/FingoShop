@@ -30,6 +30,7 @@ NSString* _WSServiceType;
 
 NSString* _backNavigationName;
 NSString* _backNavigationName1;
+NSString* _backNavigationSortOption;
 
 @implementation Constants
 

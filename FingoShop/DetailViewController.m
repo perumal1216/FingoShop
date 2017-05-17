@@ -21,6 +21,7 @@
 #import "Constants.h"
 #import "ProductDetailNewVC.h"
 #import "VirtualDetailsVC.h"
+#import "SortViewController.h"
 
 
 #define IS_IPHONE5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
@@ -37,6 +38,9 @@
     NSInteger selectedindexVal;
     UIBarButtonItem *AP_barbutton1,*AP_barbutton2,*AP_barbutton3,*AP_barbutton4;
     NSDictionary *selectedProduct;
+    NSDictionary *avaulable_filters_Dict;
+    NSMutableArray *avaulable_filters_array;
+    
     
 }
 - (IBAction)btnMenuClicked:(id)sender;
@@ -57,6 +61,8 @@ AppDelegate *apdl_detail;
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNotification) name:@"logoutNotification" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sortProductListAction:) name:@"sortProductList" object:nil];
     
     apdl_detail=(AppDelegate *)[[UIApplication sharedApplication] delegate];
     receivedData=[NSMutableData data];
@@ -162,34 +168,47 @@ AppDelegate *apdl_detail;
     }
     else {
         
-        [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack];
-        // Dispatch a block of code to a background queue
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-        dispatch_async(queue, ^{
-            // Do initialisation in the background
-            /*dispatch_sync(dispatch_get_main_queue(), ^{
-                // Set progress indicator to complete?
-                [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack];
+        if ([_backNavigationSortOption isEqualToString:@"Sorted"]) {
+            
+            _backNavigationSortOption = @"";
+            
+        }
+        else{
+            
+            [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack];
+            // Dispatch a block of code to a background queue
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+            dispatch_async(queue, ^{
+                // Do initialisation in the background
+                /*dispatch_sync(dispatch_get_main_queue(), ^{
+                 // Set progress indicator to complete?
+                 [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack];
+                 });
+                 
+                 */
+                
+                
+                //  NSLog(@" call product list:%@",   )
+                
+                NSLog(@"selected category id:%@", _WSConstSelectedCategoryID);
+                // Call back to the main queue if you want to update any UI when you are done
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [self callProductListService:_WSConstSelectedCategoryID];
+                    // Set progress indicator to complete?
+                    [_Detail_collecVW reloadData];
+                    [SVProgressHUD dismiss];
+                });
             });
-            
-            */
-            
+        }
         
-            //  NSLog(@" call product list:%@",   )
-            
-            NSLog(@"selected category id:%@", _WSConstSelectedCategoryID);
-            // Call back to the main queue if you want to update any UI when you are done
-            dispatch_sync(dispatch_get_main_queue(), ^{
-            [self callProductListService:_WSConstSelectedCategoryID];
-                // Set progress indicator to complete?
-                [_Detail_collecVW reloadData];
-                [SVProgressHUD dismiss];
-            });
-        });
-    }
+        
+        [self CheckCart];
+        }
+        
+        
+        
+        
 
-    
-    [self CheckCart];
     
 }
 
@@ -369,6 +388,30 @@ AppDelegate *apdl_detail;
 
 
 #pragma mark - Button Action Methods
+- (IBAction)filterButtonAction:(id)sender
+{
+    
+    NSLog(@"======%@",avaulable_filters_array);
+    SortViewController *sortvc = [self.storyboard instantiateViewControllerWithIdentifier:@"SortViewController"];
+    
+    sortvc.filterFlag = @"Filter";
+    sortvc.sortOptionsArray = avaulable_filters_array;
+    
+    [self.navigationController pushViewController:sortvc animated:YES];
+    
+    
+}
+
+
+- (IBAction)sortButtonAction:(id)sender
+{
+    SortViewController *sortvc = [self.storyboard instantiateViewControllerWithIdentifier:@"SortViewController"];
+    
+     sortvc.filterFlag = @"Sorted";
+    
+    [self.navigationController pushViewController:sortvc animated:YES];
+   // [self.navigationController presentViewController:vc animated:YES completion:nil];
+}
 
 
 -(void)yourButtonClicked:(UIButton*)sender
@@ -571,6 +614,83 @@ AppDelegate *apdl_detail;
 
 #pragma  mark - ServiceConnection Methods
 
+
+-(void)sortProductListAction:(NSNotification *)findStr
+{
+   
+    NSString *userInfo = [findStr object];
+    NSString *order ;
+    NSString *direction;
+    
+    if ([userInfo isEqualToString:@"Price - High to Low"]) {
+        
+        order = @"price";
+        direction  = @"desc";
+    }
+    else if ([userInfo isEqualToString:@"Price - Low to High"])
+    {
+        order = @"price";
+        direction  = @"asc";
+    }
+    else if ([userInfo isEqualToString:@"Position"])
+    {
+        order = @"position";
+        direction  = @"desc";
+    }
+    
+
+    
+    [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack];
+    // Dispatch a block of code to a background queue
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_async(queue, ^{
+        // Do initialisation in the background
+        /*dispatch_sync(dispatch_get_main_queue(), ^{
+         // Set progress indicator to complete?
+         [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack];
+         });
+         
+         */
+        
+        
+        //  NSLog(@" call product list:%@",   )
+        
+        NSLog(@"selected category id:%@", _WSConstSelectedCategoryID);
+        // Call back to the main queue if you want to update any UI when you are done
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self callProductListService:_WSConstSelectedCategoryID];
+            
+            [self callSortProductListService:_WSConstSelectedCategoryID order:order dir:direction];
+            // Set progress indicator to complete?
+            [_Detail_collecVW reloadData];
+            [SVProgressHUD dismiss];
+        });
+    });
+    
+    
+//    if(userInfo.("Price - High to Low")){
+//        Intent intent = new Intent(SortingListActivity.this, ProductList.class);
+//        intent.putExtra("dir", "desc");
+//        intent.putExtra("order", "price");
+//        intent.putExtra("prodId", prodId);
+//        startActivity(intent);
+//    }else if(sortSelection.equalsIgnoreCase("Price - Low to High")){
+//        Intent intent = new Intent(SortingListActivity.this, ProductList.class);
+//        intent.putExtra("dir", "asc");
+//        intent.putExtra("order", "price");
+//        intent.putExtra("prodId", prodId);
+//        startActivity(intent);
+//    }else if(sortSelection.equalsIgnoreCase("Position")){
+//        Intent intent = new Intent(SortingListActivity.this, ProductList.class);
+//        intent.putExtra("order", "position");
+//        intent.putExtra("dir", "desc");
+//        intent.putExtra("prodId", prodId);
+//        startActivity(intent);
+//    }
+    
+    
+}
+
 -(void)callVirtualDetailsService :(NSString *)ProductId
 {
     
@@ -613,6 +733,48 @@ AppDelegate *apdl_detail;
     NSMutableDictionary *resultsDict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
     
+    NSMutableArray *filtersarr=[resultsDict objectForKey:@"avaulable_filters"];
+    NSMutableArray *productsarr=[resultsDict objectForKey:@"products"];
+    
+    _itemsListArr=[[NSMutableArray alloc]init];
+    [_itemsListArr addObjectsFromArray:productsarr];
+    avaulable_filters_array = [[NSMutableArray alloc]init];
+    avaulable_filters_array = filtersarr;
+    
+    
+}
+
+-(void)callSortProductListService :(NSString *)prodId order :(NSString *)order dir :(NSString *)dir
+{
+   // intent.putExtra("dir", "asc");
+   // intent.putExtra("order", "price");
+   // intent.putExtra("prodId", prodId);
+    if(apdl_detail.net == 0)
+    {
+        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:apdl_detail.alertTTL message:apdl_detail.alertMSG preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        
+        return;
+    }
+    
+    
+    NSString *url_str1=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/index/getCategoryProductsList?id=%@&sid=%@&order=%@&dir=%@",prodId,[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"],order,dir];
+    
+    NSString *url_str = [url_str1 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURL *url=[NSURL URLWithString:url_str];
+    
+    NSData *data=[NSData dataWithContentsOfURL:url];
+    
+    NSError *error;
+    NSMutableDictionary *resultsDict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    
+    
     //   NSMutableArray *filtersarr=[resultsDict objectForKey:@"avaulable_filters"];
     NSMutableArray *productsarr=[resultsDict objectForKey:@"products"];
     
@@ -620,6 +782,7 @@ AppDelegate *apdl_detail;
     [_itemsListArr addObjectsFromArray:productsarr];
     
 }
+
 
 
 

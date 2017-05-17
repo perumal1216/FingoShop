@@ -11,6 +11,7 @@
 		2B0404711DD783CA00AA4CF2 /* GGFullscreenImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0404701DD783CA00AA4CF2 /* GGFullscreenImageViewController.m */; };
 		2B72C2531DC304A700A0C232 /* MEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B72C2521DC304A700A0C232 /* MEMenuViewController.m */; };
 		2B980CBF1E52BCEA00CC7747 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B980CBE1E52BCEA00CC7747 /* SignupViewController.m */; };
+		2BA110431ECC59C800AB67C8 /* SortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA110421ECC59C800AB67C8 /* SortViewController.m */; };
 		2BBCF8EB1E7A96A600F3283E /* ReachabilityTM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F768D1D42487B00AB84AD /* ReachabilityTM.m */; };
 		2BE6680F1E6698CA000DB721 /* arts_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BE668051E6698CA000DB721 /* arts_icon.png */; };
 		2BE668101E6698CA000DB721 /* beauty_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BE668061E6698CA000DB721 /* beauty_icon.png */; };
@@ -236,6 +237,8 @@
 		2B72C2521DC304A700A0C232 /* MEMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEMenuViewController.m; sourceTree = "<group>"; };
 		2B980CBD1E52BCEA00CC7747 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		2B980CBE1E52BCEA00CC7747 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		2BA110411ECC59C800AB67C8 /* SortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortViewController.h; sourceTree = "<group>"; };
+		2BA110421ECC59C800AB67C8 /* SortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortViewController.m; sourceTree = "<group>"; };
 		2BE668051E6698CA000DB721 /* arts_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arts_icon.png; sourceTree = "<group>"; };
 		2BE668061E6698CA000DB721 /* beauty_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beauty_icon.png; sourceTree = "<group>"; };
 		2BE668071E6698CA000DB721 /* crazy_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crazy_icon.png; sourceTree = "<group>"; };
@@ -637,6 +640,15 @@
 			name = GGFullscreenImage;
 			sourceTree = "<group>";
 		};
+		2BA110401ECC598A00AB67C8 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				2BA110411ECC59C800AB67C8 /* SortViewController.h */,
+				2BA110421ECC59C800AB67C8 /* SortViewController.m */,
+			);
+			name = Filter;
+			sourceTree = "<group>";
+		};
 		2BE668041E6698AA000DB721 /* HorizontalImages */ = {
 			isa = PBXGroup;
 			children = (
@@ -879,6 +891,7 @@
 		BE21AF1B1D382CD700DB8E96 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2BA110401ECC598A00AB67C8 /* Filter */,
 				C30C84981EAA7808008AEC9E /* VirtualShopping */,
 				BEADDCF91D43CC21005839A9 /* AppDelegate */,
 				BEADDCFA1D43CC2F005839A9 /* ModelClasses */,
@@ -1777,6 +1790,7 @@
 				82F191441D3E42520026CD78 /* ForgotpwdViewController.m in Sources */,
 				4CFF7EB51D1EB432006B1780 /* ECPercentDrivenInteractiveTransition.m in Sources */,
 				BE9B854D1D2E4F9D00233BA4 /* UIImage+GIF.m in Sources */,
+				2BA110431ECC59C800AB67C8 /* SortViewController.m in Sources */,
 				2BFFEE661DB8BD6C0041B02D /* SearchViewController.m in Sources */,
 				7B3BF9E31D35433700F7FF26 /* BasicTableViewCell.m in Sources */,
 				2B72C2531DC304A700A0C232 /* MEMenuViewController.m in Sources */,

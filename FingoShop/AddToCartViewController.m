@@ -13,6 +13,7 @@
 #import "SVProgressHUD.h"
 #import "UIImageView+WebCache.h"
 #import "DetailViewController.h"
+#import "ViewController.h"
 @interface AddToCartViewController ()
 {
     NSInteger itemTotal,discount,total;
@@ -394,7 +395,26 @@
         NSLog(@"Cart Count: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CartCount"]);
         
         if ([cartInfoArray count] == 0) {
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            //[self.navigationController popToRootViewControllerAnimated:YES];
+            
+            for (UIViewController *controller in self.navigationController.viewControllers)
+            {
+                if ([controller isKindOfClass:[ViewController class]])
+                {
+                    
+                    [self.navigationController popToViewController:controller animated:YES];
+                    
+                    break;
+                }
+                else if ([controller isKindOfClass:[DetailViewController class]])
+                {
+                    [self.navigationController popToViewController:controller animated:YES];
+                    
+                    break;
+                    
+                }
+            }
+            
         }
         else {
 

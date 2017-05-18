@@ -640,13 +640,15 @@
 			name = GGFullscreenImage;
 			sourceTree = "<group>";
 		};
-		2BA110401ECC598A00AB67C8 /* Filter */ = {
+		2BA110401ECC598A00AB67C8 /* SortAndFilter */ = {
 			isa = PBXGroup;
 			children = (
+				824B79441D4776EC00FCCB3F /* FiltersViewController.h */,
+				824B79451D4776EC00FCCB3F /* FiltersViewController.m */,
 				2BA110411ECC59C800AB67C8 /* SortViewController.h */,
 				2BA110421ECC59C800AB67C8 /* SortViewController.m */,
 			);
-			name = Filter;
+			name = SortAndFilter;
 			sourceTree = "<group>";
 		};
 		2BE668041E6698AA000DB721 /* HorizontalImages */ = {
@@ -710,8 +712,6 @@
 				4CFF7E661D1E964D006B1780 /* Info.plist */,
 				4CFF7E5E1D1E964D006B1780 /* FingoShop.xcdatamodeld */,
 				4CFF7E521D1E964D006B1780 /* Supporting Files */,
-				824B79441D4776EC00FCCB3F /* FiltersViewController.h */,
-				824B79451D4776EC00FCCB3F /* FiltersViewController.m */,
 				A66319B91D6CBD88009A1EC9 /* ShippingMethodViewController.h */,
 				A66319BA1D6CBD88009A1EC9 /* ShippingMethodViewController.m */,
 				C3D3D6981E52294F00CA0547 /* ChangePasswordVC.h */,
@@ -891,7 +891,7 @@
 		BE21AF1B1D382CD700DB8E96 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2BA110401ECC598A00AB67C8 /* Filter */,
+				2BA110401ECC598A00AB67C8 /* SortAndFilter */,
 				C30C84981EAA7808008AEC9E /* VirtualShopping */,
 				BEADDCF91D43CC21005839A9 /* AppDelegate */,
 				BEADDCFA1D43CC2F005839A9 /* ModelClasses */,

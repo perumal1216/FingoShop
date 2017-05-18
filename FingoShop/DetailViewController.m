@@ -391,13 +391,22 @@ AppDelegate *apdl_detail;
 - (IBAction)filterButtonAction:(id)sender
 {
     
-    NSLog(@"======%@",avaulable_filters_array);
-    SortViewController *sortvc = [self.storyboard instantiateViewControllerWithIdentifier:@"SortViewController"];
+    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"FingoShop" message:@"still working on "preferredStyle:UIAlertControllerStyleAlert];
     
-    sortvc.filterFlag = @"Filter";
-    sortvc.sortOptionsArray = avaulable_filters_array;
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    }]];
     
-    [self.navigationController pushViewController:sortvc animated:YES];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
+//
+//    NSLog(@"======%@",avaulable_filters_array);
+//    SortViewController *sortvc = [self.storyboard instantiateViewControllerWithIdentifier:@"SortViewController"];
+//    
+//    sortvc.filterFlag = @"Filter";
+//    sortvc.available_filterDict = avaulable_filters_Dict;
+//    
+//    [self.navigationController pushViewController:sortvc animated:YES];
     
     
 }
@@ -733,13 +742,18 @@ AppDelegate *apdl_detail;
     NSMutableDictionary *resultsDict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
     
-    NSMutableArray *filtersarr=[resultsDict objectForKey:@"avaulable_filters"];
+    //avaulable_filters_Dict =[resultsDict objectForKey:@"avaulable_filters"];
+    //NSDictionary *filtersarr=[resultsDict valueForKeyPath:@"avaulable_filters.price"];
+    
+    //NSLog(@"=====%@====",[filtersarr valueForKey:@"label"]);
+    
+    //NSArray *optionsArray = [[resultsDict valueForKeyPath:@"avaulable_filters.vesbrand"] valueForKey:@"options"];
+
     NSMutableArray *productsarr=[resultsDict objectForKey:@"products"];
     
     _itemsListArr=[[NSMutableArray alloc]init];
     [_itemsListArr addObjectsFromArray:productsarr];
-    avaulable_filters_array = [[NSMutableArray alloc]init];
-    avaulable_filters_array = filtersarr;
+   
     
     
 }

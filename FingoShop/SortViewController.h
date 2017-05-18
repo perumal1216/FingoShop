@@ -12,4 +12,5 @@
 @property (strong, nonatomic) IBOutlet UITableView *sortTableView;
 @property(nonatomic,retain) NSString *filterFlag;
 @property(nonatomic,strong) NSArray *sortOptionsArray;
+@property(nonatomic,strong) NSDictionary *available_filterDict;
 @end

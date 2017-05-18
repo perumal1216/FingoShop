@@ -13,6 +13,8 @@
 #import "CartCell.h"
 #import "ChoicePaymentViewController.h"
 #import "UIImageView+WebCache.h"
+#import "ViewController.h"
+#import "DetailViewController.h"
 
 @interface ShippingDetailsViewController ()
 
@@ -739,12 +741,39 @@
         [cartItemsInfoArray removeAllObjects];
         cartItemsInfoArray = [[itemsDict objectForKey:@"cart_items"] mutableCopy];
         
+        
         [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%lu",(unsigned long)cartItemsInfoArray.count]  forKey:@"CartCount"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         NSLog(@"Cart Count: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CartCount"]);
         
+        
+        if ([cartItemsInfoArray count] == 0) {
+            //[self.navigationController popToRootViewControllerAnimated:YES];
+            
+            for (UIViewController *controller in self.navigationController.viewControllers)
+            {
+                if ([controller isKindOfClass:[ViewController class]])
+                {
+                    
+                    [self.navigationController popToViewController:controller animated:YES];
+                    
+                    break;
+                }
+                else if ([controller isKindOfClass:[DetailViewController class]])
+                {
+                    [self.navigationController popToViewController:controller animated:YES];
+                    
+                    break;
+                    
+                }
+            }
+            
+        }
+        else {
+        
         //[self callGetCartInfoService];
         [_tbladdress reloadData];
+        }
         
     }
     else if ([serviceType isEqualToString:@"SaveAddressInfo"]) {

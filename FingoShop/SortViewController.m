@@ -18,13 +18,18 @@
 @end
 
 @implementation SortViewController
-@synthesize filterFlag,sortOptionsArray;
+@synthesize filterFlag,sortOptionsArray,available_filterDict;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     if ([filterFlag isEqualToString:@"Filter"])
     {
+       // [available_filterDict allKeys];
+        NSLog(@"======%lu====", (unsigned long)[[available_filterDict allKeys] count]);
+        
+       // sortOptionsArray = [[NSArray alloc]initWithObjects:[available_filterDict val],@"Price - Low to High",@"Position", nil];
+        
         
     }
     else{

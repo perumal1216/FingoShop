@@ -38,7 +38,7 @@
     NSInteger selectedindexVal;
     UIBarButtonItem *AP_barbutton1,*AP_barbutton2,*AP_barbutton3,*AP_barbutton4;
     NSDictionary *selectedProduct;
-    NSDictionary *avaulable_filters_Dict;
+    NSMutableDictionary *avaulable_filter_Dict;
     NSMutableArray *avaulable_filters_array;
     
     
@@ -391,22 +391,22 @@ AppDelegate *apdl_detail;
 - (IBAction)filterButtonAction:(id)sender
 {
     
-    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"FingoShop" message:@"still working on "preferredStyle:UIAlertControllerStyleAlert];
+  /*  UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"FingoShop" message:@"still working on "preferredStyle:UIAlertControllerStyleAlert];
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
     }]];
     
     [self presentViewController:alertController animated:YES completion:nil];
-    
+    */
     
 //
-//    NSLog(@"======%@",avaulable_filters_array);
-//    SortViewController *sortvc = [self.storyboard instantiateViewControllerWithIdentifier:@"SortViewController"];
-//    
-//    sortvc.filterFlag = @"Filter";
-//    sortvc.available_filterDict = avaulable_filters_Dict;
-//    
-//    [self.navigationController pushViewController:sortvc animated:YES];
+   // NSLog(@"======%@",avaulable_filters_array);
+    SortViewController *sortvc = [self.storyboard instantiateViewControllerWithIdentifier:@"SortViewController"];
+    
+    sortvc.filterFlag = @"Filter";
+    sortvc.available_filterDict = avaulable_filter_Dict;
+    
+    [self.navigationController pushViewController:sortvc animated:YES];
     
     
 }
@@ -742,12 +742,16 @@ AppDelegate *apdl_detail;
     NSMutableDictionary *resultsDict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
     
-    //avaulable_filters_Dict =[resultsDict objectForKey:@"avaulable_filters"];
-    //NSDictionary *filtersarr=[resultsDict valueForKeyPath:@"avaulable_filters.price"];
+    avaulable_filter_Dict = resultsDict;
     
-    //NSLog(@"=====%@====",[filtersarr valueForKey:@"label"]);
+   /* avaulable_filter_Dict =[resultsDict objectForKey:@"avaulable_filters"];
+    NSDictionary *filtersarr=[resultsDict valueForKeyPath:@"avaulable_filters.price"];
     
-    //NSArray *optionsArray = [[resultsDict valueForKeyPath:@"avaulable_filters.vesbrand"] valueForKey:@"options"];
+    NSLog(@"=====%@====",[filtersarr valueForKey:@"label"]);
+    
+    NSArray *optionsArray = [[resultsDict valueForKeyPath:@"avaulable_filters.vesbrand"] valueForKey:@"options"];
+    
+    */
 
     NSMutableArray *productsarr=[resultsDict objectForKey:@"products"];
     

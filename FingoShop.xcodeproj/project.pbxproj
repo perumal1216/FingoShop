@@ -199,6 +199,7 @@
 		C30C849B1EAA7873008AEC9E /* VirtualShoppingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C30C849A1EAA7873008AEC9E /* VirtualShoppingVC.m */; };
 		C30C849D1EAA7DC2008AEC9E /* vs_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C30C849C1EAA7DC2008AEC9E /* vs_bg.jpg */; };
 		C30C84A31EAA892E008AEC9E /* SelectCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C30C84A21EAA892E008AEC9E /* SelectCategoryVC.m */; };
+		C30D31B91ED68080009E6C36 /* FilterWithPriceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C30D31B81ED68080009E6C36 /* FilterWithPriceVC.m */; };
 		C30E8E141EAE7292005BADDB /* ic_vs.png in Resources */ = {isa = PBXBuildFile; fileRef = C30E8E131EAE7292005BADDB /* ic_vs.png */; };
 		C32B2B201EB7A822009F5EC9 /* MyAccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C32B2B1F1EB7A822009F5EC9 /* MyAccountVC.m */; };
 		C32B2B231EB7A84D009F5EC9 /* MyRewardPointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C32B2B221EB7A84D009F5EC9 /* MyRewardPointsVC.m */; };
@@ -568,6 +569,8 @@
 		C30C849E1EAA81BB008AEC9E /* VirtualDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualDetailsVC.h; sourceTree = "<group>"; };
 		C30C84A11EAA892E008AEC9E /* SelectCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCategoryVC.h; sourceTree = "<group>"; };
 		C30C84A21EAA892E008AEC9E /* SelectCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCategoryVC.m; sourceTree = "<group>"; };
+		C30D31B71ED68080009E6C36 /* FilterWithPriceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterWithPriceVC.h; sourceTree = "<group>"; };
+		C30D31B81ED68080009E6C36 /* FilterWithPriceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterWithPriceVC.m; sourceTree = "<group>"; };
 		C30E8E131EAE7292005BADDB /* ic_vs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vs.png; sourceTree = "<group>"; };
 		C32B2B1E1EB7A822009F5EC9 /* MyAccountVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountVC.h; sourceTree = "<group>"; };
 		C32B2B1F1EB7A822009F5EC9 /* MyAccountVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountVC.m; sourceTree = "<group>"; };
@@ -647,6 +650,8 @@
 				824B79451D4776EC00FCCB3F /* FiltersViewController.m */,
 				2BA110411ECC59C800AB67C8 /* SortViewController.h */,
 				2BA110421ECC59C800AB67C8 /* SortViewController.m */,
+				C30D31B71ED68080009E6C36 /* FilterWithPriceVC.h */,
+				C30D31B81ED68080009E6C36 /* FilterWithPriceVC.m */,
 			);
 			name = SortAndFilter;
 			sourceTree = "<group>";
@@ -1748,6 +1753,7 @@
 				BEADDCFE1D43CC7B005839A9 /* SettingsViewController.m in Sources */,
 				BE9B85501D2E4F9D00233BA4 /* UIImageView+WebCache.m in Sources */,
 				7B5F768E1D42487B00AB84AD /* ReachabilityManagerTM.m in Sources */,
+				C30D31B91ED68080009E6C36 /* FilterWithPriceVC.m in Sources */,
 				BE7506241D39691D00CA0C99 /* RATreeView+TableViewDataSource.m in Sources */,
 				824B79461D4776EC00FCCB3F /* FiltersViewController.m in Sources */,
 				A6FE0DD91D3A489500FD1C6C /* WishListViewController.m in Sources */,

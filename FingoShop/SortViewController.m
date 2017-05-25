@@ -28,7 +28,36 @@
        // [available_filterDict allKeys];
         NSLog(@"======%lu====", (unsigned long)[[available_filterDict allKeys] count]);
         
-       // sortOptionsArray = [[NSArray alloc]initWithObjects:[available_filterDict val],@"Price - Low to High",@"Position", nil];
+       
+        
+        
+         NSDictionary *keys =[available_filterDict objectForKey:@"avaulable_filters"];
+        
+        if ([keys count] == 2) {
+            
+            NSDictionary *price_dict=[available_filterDict valueForKeyPath:@"avaulable_filters.price"];
+            NSDictionary *vesbrand_dict=[available_filterDict valueForKeyPath:@"avaulable_filters.vesbrand"];
+            
+           sortOptionsArray = [[NSArray alloc]initWithObjects:[NSString stringWithFormat:@"%@",[price_dict valueForKey:@"label"]],[NSString stringWithFormat:@"%@",[vesbrand_dict valueForKey:@"label"]],nil];
+        }
+        else{
+            
+            NSDictionary *price_dict=[available_filterDict valueForKeyPath:@"avaulable_filters.price"];
+            NSDictionary *vesbrand_dict=[available_filterDict valueForKeyPath:@"avaulable_filters.vesbrand"];
+             NSDictionary *ves_size_dict=[available_filterDict valueForKeyPath:@"avaulable_filters.ves_size"];
+            
+            sortOptionsArray = [[NSArray alloc]initWithObjects:[NSString stringWithFormat:@"%@",[price_dict valueForKey:@"label"]],[NSString stringWithFormat:@"%@",[vesbrand_dict valueForKey:@"label"]],[NSString stringWithFormat:@"%@",[ves_size_dict valueForKey:@"label"]],nil];
+            
+        }
+        
+//         NSDictionary *filtersarr=[resultsDict valueForKeyPath:@"avaulable_filters.price"];
+//         
+//         NSLog(@"=====%@====",[filtersarr valueForKey:@"label"]);
+//         
+//         NSArray *optionsArray = [[resultsDict valueForKeyPath:@"avaulable_filters.vesbrand"] valueForKey:@"options"];
+//         
+        
+
         
         
     }
@@ -74,7 +103,8 @@
     }
     if ([filterFlag isEqualToString:@"Filter"])
     {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@", [[sortOptionsArray objectAtIndex:indexPath.row] objectForKey:@"label"]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@",[sortOptionsArray objectAtIndex:indexPath.row]];
+        //[NSString stringWithFormat:@"%@", [[sortOptionsArray objectAtIndex:indexPath.row] objectForKey:@"label"]];
        
         
         
@@ -91,10 +121,18 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _backNavigationSortOption = @"Sorted";
+  
     
-  [[NSNotificationCenter defaultCenter]postNotificationName:@"sortProductList" object:[sortOptionsArray objectAtIndex:indexPath.row]];
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([filterFlag isEqualToString:@"Filter"])
+    {
+       
+    }else{
+        
+        _backNavigationSortOption = @"Sorted";
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"sortProductList" object:[sortOptionsArray objectAtIndex:indexPath.row]];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     
 }
 

@@ -123,16 +123,16 @@
 {
   
     
-    if ([filterFlag isEqualToString:@"Filter"])
-    {
-       
-    }else{
-        
+//    if ([filterFlag isEqualToString:@"Filter"])
+//    {
+//       
+//    }else{
+    
         _backNavigationSortOption = @"Sorted";
         
         [[NSNotificationCenter defaultCenter]postNotificationName:@"sortProductList" object:[sortOptionsArray objectAtIndex:indexPath.row]];
         [self.navigationController popViewControllerAnimated:YES];
-    }
+   // }
     
 }
 

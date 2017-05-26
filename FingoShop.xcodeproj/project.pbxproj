@@ -205,6 +205,7 @@
 		C32B2B231EB7A84D009F5EC9 /* MyRewardPointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C32B2B221EB7A84D009F5EC9 /* MyRewardPointsVC.m */; };
 		C37953D81EB1840D005FADEC /* OTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C37953D71EB1840D005FADEC /* OTPViewController.m */; };
 		C3A6DCB41E53FBC900D8FB5B /* KIImagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A6DCB31E53FBC900D8FB5B /* KIImagePager.m */; };
+		C3C260361ED74FF0008A7880 /* PrivacyPolicyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C260351ED74FF0008A7880 /* PrivacyPolicyVC.m */; };
 		C3D993801E52A36A002ACBC4 /* ChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D3D6991E52294F00CA0547 /* ChangePasswordVC.m */; };
 		C3F18E361EAC9E860081B827 /* VirtualDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F18E351EAC9E860081B827 /* VirtualDetailsVC.m */; };
 		ED0BA2FF6366059F58759EF2 /* libPods-FingoShopUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6B0A937B29DF8B6B588F93 /* libPods-FingoShopUITests.a */; };
@@ -580,6 +581,8 @@
 		C37953D71EB1840D005FADEC /* OTPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPViewController.m; sourceTree = "<group>"; };
 		C3A6DCB21E53FBC900D8FB5B /* KIImagePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIImagePager.h; sourceTree = "<group>"; };
 		C3A6DCB31E53FBC900D8FB5B /* KIImagePager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIImagePager.m; sourceTree = "<group>"; };
+		C3C260341ED74FEF008A7880 /* PrivacyPolicyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPolicyVC.h; sourceTree = "<group>"; };
+		C3C260351ED74FF0008A7880 /* PrivacyPolicyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPolicyVC.m; sourceTree = "<group>"; };
 		C3D3D6981E52294F00CA0547 /* ChangePasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordVC.h; sourceTree = "<group>"; };
 		C3D3D6991E52294F00CA0547 /* ChangePasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordVC.m; sourceTree = "<group>"; };
 		C3D9937B1E529F56002ACBC4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -896,6 +899,7 @@
 		BE21AF1B1D382CD700DB8E96 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C3C260371ED74FF7008A7880 /* PrivacyPolicy */,
 				2BA110401ECC598A00AB67C8 /* SortAndFilter */,
 				C30C84981EAA7808008AEC9E /* VirtualShopping */,
 				BEADDCF91D43CC21005839A9 /* AppDelegate */,
@@ -1395,6 +1399,15 @@
 			name = VirtualShopping;
 			sourceTree = "<group>";
 		};
+		C3C260371ED74FF7008A7880 /* PrivacyPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				C3C260341ED74FEF008A7880 /* PrivacyPolicyVC.h */,
+				C3C260351ED74FF0008A7880 /* PrivacyPolicyVC.m */,
+			);
+			name = PrivacyPolicy;
+			sourceTree = "<group>";
+		};
 		F63E3C6ADCF748D35DA88F37 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1765,6 +1778,7 @@
 				BE7506181D39691D00CA0C99 /* RATreeView.m in Sources */,
 				BEA6FBD51D6F8AE600EB8401 /* iOSDefaultActivityIndicator.m in Sources */,
 				82B40DD71D70450D008198A4 /* MyOrdersCell.m in Sources */,
+				C3C260361ED74FF0008A7880 /* PrivacyPolicyVC.m in Sources */,
 				C3F18E361EAC9E860081B827 /* VirtualDetailsVC.m in Sources */,
 				7B3BF9E81D35480E00F7FF26 /* ComplexMainTableViewCell.m in Sources */,
 				82C98F7B1D634D840046AF72 /* ChoicePaymentViewController.m in Sources */,
@@ -1928,8 +1942,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Divya Jogipeta (798M8WG355)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Divya Jogipeta (798M8WG355)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CTOUCH PRODUCTS PRIVATE LIMITED (Y2MC3JYYTY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CTOUCH PRODUCTS PRIVATE LIMITED (Y2MC3JYYTY)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = Y2MC3JYYTY;
@@ -1952,7 +1966,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "93dbf200-8c43-4cec-87f6-5342c6c28353";
+				PROVISIONING_PROFILE = "e33d2a2e-1c51-4ee3-b1aa-7568f2a396bb";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1974,8 +1988,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Divya Jogipeta (798M8WG355)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Divya Jogipeta (798M8WG355)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CTOUCH PRODUCTS PRIVATE LIMITED (Y2MC3JYYTY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CTOUCH PRODUCTS PRIVATE LIMITED (Y2MC3JYYTY)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Y2MC3JYYTY;
@@ -1991,7 +2005,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "93dbf200-8c43-4cec-87f6-5342c6c28353";
+				PROVISIONING_PROFILE = "e33d2a2e-1c51-4ee3-b1aa-7568f2a396bb";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2003,8 +2017,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Divya Jogipeta (798M8WG355)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Divya Jogipeta (798M8WG355)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CTOUCH PRODUCTS PRIVATE LIMITED (Y2MC3JYYTY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CTOUCH PRODUCTS PRIVATE LIMITED (Y2MC3JYYTY)";
 				DEVELOPMENT_TEAM = Y2MC3JYYTY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2024,8 +2038,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fingoshop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "93dbf200-8c43-4cec-87f6-5342c6c28353";
-				PROVISIONING_PROFILE_SPECIFIER = Fingo_Dev;
+				PROVISIONING_PROFILE = "e33d2a2e-1c51-4ee3-b1aa-7568f2a396bb";
+				PROVISIONING_PROFILE_SPECIFIER = FingoShop_Distribution_Latest;
 			};
 			name = Debug;
 		};
@@ -2035,8 +2049,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Divya Jogipeta (798M8WG355)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Divya Jogipeta (798M8WG355)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CTOUCH PRODUCTS PRIVATE LIMITED (Y2MC3JYYTY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CTOUCH PRODUCTS PRIVATE LIMITED (Y2MC3JYYTY)";
 				DEVELOPMENT_TEAM = Y2MC3JYYTY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2056,8 +2070,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fingoshop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "93dbf200-8c43-4cec-87f6-5342c6c28353";
-				PROVISIONING_PROFILE_SPECIFIER = Fingo_Dev;
+				PROVISIONING_PROFILE = "e33d2a2e-1c51-4ee3-b1aa-7568f2a396bb";
+				PROVISIONING_PROFILE_SPECIFIER = FingoShop_Distribution_Latest;
 			};
 			name = Release;
 		};

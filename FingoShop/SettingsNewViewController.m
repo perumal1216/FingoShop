@@ -10,6 +10,7 @@
 #import "SVProgressHUD.h"
 #import "OrdersListViewController.h"
 #import "UIBarButtonItem+Badge.h"
+#import "PrivacyPolicyVC.h"
 
 @interface SettingsNewViewController ()
 {
@@ -212,8 +213,18 @@
 
 }
 
+- (IBAction)termsandconditionsClicked:(id)sender {
+    PrivacyPolicyVC *privacyVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PrivacyPolicyVC"];
+    privacyVC.flagStrng = @"TermsAndConditions";
+    [self.navigationController pushViewController:privacyVC animated:YES];
+}
 
 - (IBAction)btnHelpClicked:(id)sender {
+    
+    PrivacyPolicyVC *privacyVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PrivacyPolicyVC"];
+    privacyVC.flagStrng = @"PrivacyAndPolicy";
+    [self.navigationController pushViewController:privacyVC animated:YES];
+    
 }
 
 - (IBAction)btnSignOutClicked:(id)sender {

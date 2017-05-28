@@ -25,6 +25,9 @@
     NSMutableDictionary *shippingdict;
     NSString *selectedPaymentMethod,*selectedPaymentType;
     NSDictionary *paymentTypesDict;
+    NSString *selected_Method;
+    NSIndexPath *selected_indexPath;
+    NSIndexPath *oldIndex;
     
 }
 @property (weak, nonatomic) IBOutlet UITableView *tblPayment;
@@ -49,6 +52,8 @@
     [super viewDidLoad];
     
     NSLog(@"shippingInfo %@",shippingInfo);
+    
+    
     
     shippingdict=[shippingInfo objectForKey:@"shippingAddress"];
     
@@ -125,8 +130,6 @@
 //        cell.paymentLabel.text = [dict objectForKey:@"label"];
         
         cell.paymentLabel.text = [_paymentTypesArray objectAtIndex:indexPath.row];
-        
-        
         return cell;
     }
     else {
@@ -159,7 +162,29 @@
         {
             cell.lblDelivery.text= [NSString stringWithFormat:@"₹ %@",[shippingdict objectForKey:@"shipping_amount"]];
         }
-
+        
+        // continue button 
+        
+        if ([selected_Method isEqualToString:@"PaymentSelected"]) {
+            [cell.continue_button setHidden:NO];
+        }
+        else{
+             [cell.continue_button setHidden:YES];
+        }
+        
+        NSString *payment_method = [_paymentTypesArray objectAtIndex:selected_indexPath.row];
+        
+        if ([payment_method isEqualToString:@"Cash on Delivery"]) {
+            
+            [cell.continue_button setTitle:@"PLACE ORDER" forState:UIControlStateNormal];
+            
+        }else{
+            
+            [cell.continue_button setTitle:@"CONTINUE" forState:UIControlStateNormal];
+        }
+        
+        [cell.continue_button addTarget:self action:@selector(continueButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
         
         return cell;
 
@@ -167,10 +192,32 @@
  
 }
 
+-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    oldIndex = [tableView indexPathForSelectedRow];
+    [tableView cellForRowAtIndexPath:oldIndex].accessoryType = UITableViewCellAccessoryNone;
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+    return indexPath;
+}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {   NSDictionary *dict = [paymentTypesDict objectForKey:[_paymentTypesArray objectAtIndex:indexPath.row]];
-    if (indexPath.section == 0)
+    
+    if (indexPath.section == 0) {
+    AmountDetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"amountDetailsCell"];
+        selected_indexPath = indexPath;
+        selected_Method = @"PaymentSelected";
+        [cell.continue_button setHidden:NO];
+        
+        
+    NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:0 inSection:1];
+        NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
+        [_tblPayment reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
+    
+    
+  /*  if (indexPath.section == 0)
     {
         //if (_SelectedShipmentName) {
             
@@ -199,7 +246,7 @@
             
         }
        
-            
+   
             
 //    }else
 //        {
@@ -215,7 +262,7 @@
 //        }
     
 
-    }
+    }*/
 }
 
 
@@ -256,7 +303,41 @@ heightForFooterInSection:(NSInteger)section {
 {
     [self performSegueWithIdentifier:@"ShipmentMethod" sender:self];
 }
-
+-(void)continueButtonClicked:(UIButton *)sender
+{
+    
+    //  if (indexPath.section == 0)
+    // {
+     
+     if ([[_paymentTypesArray objectAtIndex:selected_indexPath.row] isEqualToString:@"Credit Card"] || [[_paymentTypesArray objectAtIndex:selected_indexPath.row] isEqualToString:@"Debit Card"]) {
+     selectedPaymentType = @"Credit Card";
+     selectedPaymentMethod = @"payubiz";
+     
+     [self callSavePayment:selectedPaymentMethod];
+     
+     
+     }
+     else if ([[_paymentTypesArray objectAtIndex:selected_indexPath.row] isEqualToString:@"Cash on Delivery"]) {
+     selectedPaymentType = @"Cash on Delivery";
+     selectedPaymentMethod = @"cashondelivery";
+     
+     [self callSavePayment:selectedPaymentMethod];
+     
+     }
+     else if ([[_paymentTypesArray objectAtIndex:selected_indexPath.row] isEqualToString:@"Net Banking"]) {
+     
+     selectedPaymentType = @"Net Banking";
+     selectedPaymentMethod = @"payubiz";
+     
+     [self callSavePayment:selectedPaymentMethod];
+     
+     
+     }
+     
+//}
+    
+    
+}
 
 
 #pragma mark - ServiceConnection Methods

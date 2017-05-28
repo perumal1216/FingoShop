@@ -25,6 +25,7 @@
     NSInteger selectedIndexVal;
     NSMutableDictionary *addressDict,*ShippingInfoDict;
     NSString *productName;
+    NSString *selected_address;
     
 }
 @property (weak, nonatomic) IBOutlet UITableView *tbladdress;
@@ -322,19 +323,21 @@
         
         
         
-//        UIButton *footerButton2 = [[UIButton alloc] initWithFrame:
-//                                   CGRectMake((tableView.frame.size.width/4)*3-55,4,109, 32)];
-//        
-//        [footerButton2 setTitle:@"EDIT" forState:UIControlStateNormal];
-//        [footerButton2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//        footerButton2.titleLabel.font = [UIFont systemFontOfSize:14.0];
-//        
+        UIButton *footerButton2 = [[UIButton alloc] initWithFrame:
+                                   CGRectMake((tableView.frame.size.width/4)*3-55,4,109, 32)];
+        
+        [footerButton2 setTitle:@"EDIT" forState:UIControlStateNormal];
+        [footerButton2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [footerButton2 addTarget:self action:@selector(continueBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        footerButton2.tag = section;
+        footerButton2.titleLabel.font = [UIFont systemFontOfSize:14.0];
+        
     UILabel *footerLabel = [[UILabel alloc]initWithFrame:CGRectMake(tableView.frame.size.width/2, 4, 1, 32)];
 //        footerLabel.backgroundColor = [UIColor grayColor];;
 //        
     [sectionHeaderView addSubview:footerButton1];
         [sectionHeaderView addSubview:footerLabel];
-//        [sectionHeaderView addSubview:footerButton2];
+       //[sectionHeaderView addSubview:footerButton2];
         
         return sectionHeaderView;
         
@@ -357,12 +360,14 @@
         
         UIButton *footerButton2 = [[UIButton alloc] initWithFrame:
                                    CGRectMake((tableView.frame.size.width/4)*3-55,4,109, 32)];
+        [footerButton2 setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:111.0/255.0 blue:110.0/255.0 alpha:1]];
+        [footerButton2.layer setCornerRadius:3];
         
-        [footerButton2 setTitle:@"EDIT" forState:UIControlStateNormal];
-        [footerButton2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [footerButton2 setTitle:@"CONTINUE" forState:UIControlStateNormal];
+        [footerButton2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         footerButton2.titleLabel.font = [UIFont systemFontOfSize:14.0];
         footerButton2.tag = section;
-        [footerButton2 addTarget:self action:@selector(editBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [footerButton2 addTarget:self action:@selector(continueBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         
         
         
@@ -373,7 +378,15 @@
         
         [sectionHeaderView addSubview:footerButton1];
         [sectionHeaderView addSubview:footerLabel];
-       // [sectionHeaderView addSubview:footerButton2];
+        [sectionHeaderView addSubview:footerButton2];
+        
+        if ([selected_address isEqualToString:@"AddressSelected"]) {
+            
+            [footerButton2 setHidden:NO];
+        }
+        else{
+            [footerButton2 setHidden:YES];
+        }
         
         return sectionHeaderView;
         
@@ -437,6 +450,21 @@
         
     }
 }
+-(void)continueBtnClicked:(UIButton*)sender
+{
+      addressDict=[addressListArray objectAtIndex:selectedIndexVal];
+     
+     if (addressDict) {
+     
+     NSString *post = [NSString stringWithFormat:@"email=%@&firstname=%@&lastname=%@&street=%@&city=%@&postcode=%@&telephone=%@&country_id=%@&region=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"email"],[addressDict objectForKey:@"firstname"],[addressDict objectForKey:@"lastname"],[addressDict objectForKey:@"street"],[addressDict objectForKey:@"city"],[addressDict objectForKey:@"postcode"],[addressDict objectForKey:@"telephone"],[addressDict objectForKey:@"country_id"],[addressDict objectForKey:@"region"]];
+     [self callAddressSaveService:post];
+     }
+     //            [self performSegueWithIdentifier:@"paymentSegue" sender:self];
+     NSLog(@"Test");
+
+}
+
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -530,6 +558,8 @@
         [cell.editButton addTarget:self action:@selector(adressEditButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [cell.deleteButton addTarget:self action:@selector(adressDeleteButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        
         return cell;
         
     }
@@ -566,12 +596,19 @@
     }
     else
     {
+        
+      // [_tbladdress reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationNone];
+        
+        
+        selected_address = @"AddressSelected";
+        
         [tableView selectRowAtIndexPath:indexPath
                                animated:NO
                          scrollPosition:UITableViewScrollPositionMiddle];
         selectedIndexVal = indexPath.row;
         
-        addressDict=[addressListArray objectAtIndex:indexPath.row];
+        [_tbladdress reloadData];
+      /*  addressDict=[addressListArray objectAtIndex:indexPath.row];
         
         if (addressDict) {
             
@@ -579,7 +616,7 @@
             [self callAddressSaveService:post];
         }
         //            [self performSegueWithIdentifier:@"paymentSegue" sender:self];
-        NSLog(@"Test");
+        NSLog(@"Test"); */
     }
     
     

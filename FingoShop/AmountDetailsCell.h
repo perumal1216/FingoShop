@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTotalAmount;
 @property (weak, nonatomic) IBOutlet UIButton *btnSelectShipment;
 @property (weak, nonatomic) IBOutlet UILabel *lblShippingMethod;
+@property (weak, nonatomic) IBOutlet UIButton *continue_button;
 
 @end

@@ -390,6 +390,19 @@
         [cartInfoArray removeAllObjects];
         cartInfoArray = [[itemsDict objectForKey:@"cart_items"] mutableCopy];
         
+        _lblItemTotal.text = [NSString stringWithFormat:@"₹ %@",[itemsTotal objectForKey:@"subtotal"]];
+        _lblTotal.text = [NSString stringWithFormat:@"₹ %@",[itemsTotal objectForKey:@"grandtotal"]];
+        _lblShippingCharges.text = [NSString stringWithFormat:@"₹ %@",[itemsTotal objectForKey:@"shipping"]];
+        _lblPointsUsed.text = [NSString stringWithFormat:@"₹ %@",[itemsTotal objectForKey:@"point_used"]];
+        
+        if ([[NSString stringWithFormat:@"%@",[itemsTotal objectForKey:@"discount"]] isEqualToString:@""]) {
+            _lblDiscount.text = [NSString stringWithFormat:@"₹ 0"];
+        }
+        else {
+            _lblDiscount.text = [NSString stringWithFormat:@"₹ %@",[itemsTotal objectForKey:@"discount"]];
+        }
+
+        
         [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%lu",(unsigned long)cartInfoArray.count]  forKey:@"CartCount"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         NSLog(@"Cart Count: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CartCount"]);

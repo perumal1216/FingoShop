@@ -131,6 +131,7 @@ AppDelegate *apdl_product;
     urlString=[urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     NSLog(@"prof img is %@",urlString);
     NSURL *url = [NSURL URLWithString:urlString];
+   _productsImageView.contentMode = UIViewContentModeScaleAspectFit;
     [_productsImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"place"]];
     if ([[productDetailsDict1 objectForKey:@"is_in_stock"] intValue]== 1) {
         _lblAvailability.text=[NSString stringWithFormat:@"In Stock"];
@@ -401,6 +402,7 @@ AppDelegate *apdl_product;
         urlString=[urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
         NSLog(@"prof img is %@",urlString);
         NSURL *url = [NSURL URLWithString:urlString];
+        cell.productImage.contentMode = UIViewContentModeScaleAspectFit;
         [cell.productImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"place"]];
         
         return cell;

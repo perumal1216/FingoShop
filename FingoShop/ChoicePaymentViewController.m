@@ -193,10 +193,19 @@
 }
 
 -(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    oldIndex = [tableView indexPathForSelectedRow];
-    [tableView cellForRowAtIndexPath:oldIndex].accessoryType = UITableViewCellAccessoryNone;
-    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-    return indexPath;
+    
+    if (indexPath.section == 0)
+    {
+        oldIndex = [tableView indexPathForSelectedRow];
+        [tableView cellForRowAtIndexPath:oldIndex].accessoryType = UITableViewCellAccessoryNone;
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        return indexPath;
+    }
+    else{
+        
+        return nil;
+    }
+    
 }
 
 

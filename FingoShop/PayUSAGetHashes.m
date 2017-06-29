@@ -42,6 +42,7 @@
             NSDictionary *hashDictionary = [NSDictionary new];
             NSError *serializationError;
             hashDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&serializationError];
+            
             if (serializationError) {
                 serverResponseForHashGenerationCallback(nil ,error.localizedDescription);
             }//[[hashDictionary valueForKey:@"status"] isEqualToString:@"0"]

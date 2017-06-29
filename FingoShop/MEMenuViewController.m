@@ -61,6 +61,13 @@ AppDelegate *apdl_menu;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIView *cView  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, 200)];
+    cView.backgroundColor = [UIColor redColor];
+    
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+    label.text = @"Perumal";
+    [cView addSubview:label];
+    
     apdl_menu=(AppDelegate *)[[UIApplication sharedApplication] delegate];
 
     [self loaddatafromURL];
@@ -136,6 +143,15 @@ AppDelegate *apdl_menu;
          [cell.additionButton  setSelected:YES];
     
 }
+- (void)setTreeFooterView:(UIView *)treeFooterView
+{
+    
+    UIView *view  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, 200)];
+    view.backgroundColor = [UIColor redColor];
+    
+    
+    
+}
 
 - (void)treeView:(RATreeView *)treeView willCollapseRowForItem:(id)item
 {
@@ -143,7 +159,6 @@ AppDelegate *apdl_menu;
     [cell.additionButton  setSelected:NO];
 //    [cell setAdditionButtonHidden:YES animated:YES];
 }
-
 - (void)treeView:(RATreeView *)treeView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowForItem:(id)item
 {
     if (editingStyle != UITableViewCellEditingStyleDelete) {

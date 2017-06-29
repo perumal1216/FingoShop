@@ -80,7 +80,7 @@ AppDelegate *apdl;
    // NSError*err;
 //datadic=[NSJSONSerialization JSONObjectWithData:jsondata options:NSJSONReadingMutableContainers error:&err];
   // NSLog(@" the dic sat   %@",datadic);
-//bannerarry=[datadic valueForKey:@"source_file"];
+//=[datadic valueForKey:@"source_file"];
    // NSDictionary*newimg = [jsonDict ];
     // bannerarry=[NSMutableArray arrayWithObject:datadic];
     

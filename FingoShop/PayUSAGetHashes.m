@@ -14,10 +14,26 @@
 
 -(void) generateHashFromServer:(PayUModelPaymentParams *) paymentParam withCompletionBlock:(hashRequestCompletionBlock)completionBlock{
     void(^serverResponseForHashGenerationCallback)(PayUHashes *hashes, NSString *errorString) = completionBlock;
+  /*
+    NSString *hashURL1=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/checkout/getHashes?sid=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
+    
+    NSString *url_str = [hashURL1 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURL *url=[NSURL URLWithString:url_str];
+    
+    NSData *data=[NSData dataWithContentsOfURL:url];
+    
+    NSError *error;
+    NSMutableDictionary *resultsDict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    
+    */
+    
+    
+    
     //    NSURL *hashURL = [NSURL URLWithString:@"https://payu.herokuapp.com/get_hash"];
-    NSURL *hashURL = [NSURL URLWithString:@"http://www.fingoshop.com/restconnect/checkout/getHashes"];
+    NSURL *hashURL = [NSURL URLWithString:@"https://www.fingoshop.com/restconnect/checkout/getHashes"];
     
-    
+     
     // create the request
     NSMutableURLRequest *hashRequest=[NSMutableURLRequest requestWithURL:hashURL
                                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -25,7 +41,10 @@
     // Specify that it will be a POST request
     hashRequest.HTTPMethod = @"POST";
     NSString *postParam = [NSString stringWithFormat:@"offerKey=%@&key=%@&hash=hash&email=%@&amount=%@&firstname=%@&txnid=%@&user_credentials=%@&udf1=%@&udf2=%@&udf3=%@&udf4=%@&udf5=%@&productinfo=%@&cardBin=cardBin",[self checkParamaterForNil:paymentParam.offerKey],[self checkParamaterForNil:paymentParam.key],[self checkParamaterForNil:paymentParam.email],[self checkParamaterForNil:paymentParam.amount],[self checkParamaterForNil:paymentParam.firstName],[self checkParamaterForNil:paymentParam.transactionID],[self checkParamaterForNil:paymentParam.userCredentials],[self checkParamaterForNil:paymentParam.udf1],[self checkParamaterForNil:paymentParam.udf2],[self checkParamaterForNil:paymentParam.udf3],[self checkParamaterForNil:paymentParam.udf4],[self checkParamaterForNil:paymentParam.udf5],[self checkParamaterForNil:paymentParam.productInfo]];
-    NSLog(@"-->>Hash generation Post Param = %@",postParam);
+    
+   // NSString *postParam = [NSString stringWithFormat:@"SID=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
+    
+        NSLog(@"-->>Hash generation Post Param = %@",postParam);
     //set request content type we MUST set this value.
     [hashRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     //set post data of request

@@ -96,6 +96,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    
+    
+    if (selected_indexPath != nil) {
+        [_tblPayment cellForRowAtIndexPath:selected_indexPath].accessoryType = UITableViewCellAccessoryNone;
+    }
+    else{
+        
+    }
+    
     //if (_SelectedShipmentName) {
         [self startPayment:nil];
         [_tblPayment reloadData];
@@ -423,35 +432,53 @@ heightForFooterInSection:(NSInteger)section {
                     
                 }
                 else if ([selectedPaymentType isEqualToString:@"Cash on Delivery"]) {
-                    [self callsubmitOrder];
-                    [self callDestroyCartItems];
+                    
+            /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        
+                        // DATA PROCESSING 1
+//                      [self callsubmitOrder];
+//                        
+//                        dispatch_async(dispatch_get_main_queue(), ^{
+//                            // UI UPDATION 1
+//                            
+//                             [self callDestroyCartItems];
+//                        });
+                
+                   [self callDestroyCartItems];
+    
+                    });
+                   ///[self callsubmitOrder];
+                   // [self callDestroyCartItems];
                  //
                 }
+           
+           */
 
-          // [self callsubmitOrder];
+            [self callsubmitOrder];
         }
-        
     }
-//    else if ([ServiceType isEqualToString:@"SubmitOrder"]) {
-//        
-//        if ([[jsonDict objectForKey:@"status"] isEqualToString:@"success"]) {
-//            
-//            
-//            if ([selectedPaymentType isEqualToString:@"Credit Card"]) {
-//                
-//                [self performSegueWithIdentifier:@"CreditCardPage" sender:self];
-//            }
-//            else if ([selectedPaymentType isEqualToString:@"Net Banking"]) {
-//                
-//                [self performSegueWithIdentifier:@"NetBanking" sender:self];
-//
-//            }
-//            else if ([selectedPaymentType isEqualToString:@"Cash on Delivery"]) {
-//                
-//                [self callDestroyCartItems];
-//                
-//            }
-        //}
+    }
+    }
+    else if ([ServiceType isEqualToString:@"SubmitOrder"]) {
+        
+        if ([[jsonDict objectForKey:@"status"] isEqualToString:@"success"]) {
+            
+            
+            if ([selectedPaymentType isEqualToString:@"Credit Card"]) {
+                
+                [self performSegueWithIdentifier:@"CreditCardPage" sender:self];
+            }
+            else if ([selectedPaymentType isEqualToString:@"Net Banking"]) {
+                
+                [self performSegueWithIdentifier:@"NetBanking" sender:self];
+
+            }
+            else if ([selectedPaymentType isEqualToString:@"Cash on Delivery"]) {
+                
+                [self callDestroyCartItems];
+                
+            }
+        }
         else
         {
             UIAlertController*  alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:@"Somthing went wrong,call customer care." preferredStyle:UIAlertControllerStyleAlert];
@@ -491,8 +518,24 @@ heightForFooterInSection:(NSInteger)section {
                
                 
             }
+        else{
+            UIAlertController*  alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[jsonDict objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+        }]];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+        
             
         }
+    else if ([ServiceType isEqualToString:@"SubmitOrder"])
+    {
+        NSLog(@"=== ''' submitorder");
+        
+    }
+    
         else {
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[jsonDict objectForKey:@"status"] preferredStyle:UIAlertControllerStyleAlert];
             

@@ -324,11 +324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716242.020048"
+            timestampString = "520789807.727467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "564"
-            endingLineNumber = "564"
+            startingLineNumber = "563"
+            endingLineNumber = "563"
             landmarkName = "-dataReceived:"
             landmarkType = "7">
          </BreakpointContent>
@@ -340,11 +340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716242.020048"
+            timestampString = "520789807.727467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "589"
-            endingLineNumber = "589"
+            startingLineNumber = "588"
+            endingLineNumber = "588"
             landmarkName = "-dataReceived:"
             landmarkType = "7">
          </BreakpointContent>
@@ -436,11 +436,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716242.020048"
+            timestampString = "520789807.727467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "635"
-            endingLineNumber = "635"
+            startingLineNumber = "634"
+            endingLineNumber = "634"
             landmarkName = "-startPayment:"
             landmarkType = "7">
          </BreakpointContent>
@@ -452,11 +452,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716242.020048"
+            timestampString = "520789807.727467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "603"
-            endingLineNumber = "603"
+            startingLineNumber = "602"
+            endingLineNumber = "602"
             landmarkName = "-startPayment:"
             landmarkType = "7">
          </BreakpointContent>
@@ -468,11 +468,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716242.020048"
+            timestampString = "520789807.727467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "634"
-            endingLineNumber = "634"
+            startingLineNumber = "633"
+            endingLineNumber = "633"
             landmarkName = "-startPayment:"
             landmarkType = "7">
             <Locations>
@@ -516,11 +516,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716242.020048"
+            timestampString = "520789807.727467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "640"
-            endingLineNumber = "640"
+            startingLineNumber = "639"
+            endingLineNumber = "639"
             landmarkName = "-startPayment:"
             landmarkType = "7">
          </BreakpointContent>
@@ -532,11 +532,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716242.020048"
+            timestampString = "520789807.727467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "636"
-            endingLineNumber = "636"
+            startingLineNumber = "635"
+            endingLineNumber = "635"
             landmarkName = "-startPayment:"
             landmarkType = "7">
          </BreakpointContent>
@@ -548,11 +548,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716242.020048"
+            timestampString = "520789807.727467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "632"
-            endingLineNumber = "632"
+            startingLineNumber = "631"
+            endingLineNumber = "631"
             landmarkName = "-startPayment:"
             landmarkType = "7">
             <Locations>
@@ -596,11 +596,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716242.020048"
+            timestampString = "520789807.727467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "647"
-            endingLineNumber = "647"
+            startingLineNumber = "646"
+            endingLineNumber = "646"
             landmarkName = "-startPayment:"
             landmarkType = "7">
          </BreakpointContent>
@@ -676,11 +676,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716242.020048"
+            timestampString = "520789807.727467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "608"
-            endingLineNumber = "608"
+            startingLineNumber = "607"
+            endingLineNumber = "607"
             landmarkName = "-startPayment:"
             landmarkType = "7">
          </BreakpointContent>
@@ -724,11 +724,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716242.020048"
+            timestampString = "520789807.727467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "645"
-            endingLineNumber = "645"
+            startingLineNumber = "644"
+            endingLineNumber = "644"
             landmarkName = "-startPayment:"
             landmarkType = "7">
          </BreakpointContent>
@@ -996,22 +996,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716242.020048"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "535"
-            endingLineNumber = "535"
-            landmarkName = "-jsonData:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FingoShop/ChoicePaymentViewController.m"
             timestampString = "520716227.209107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -1172,12 +1156,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FingoShop/ChoicePaymentViewController.m"
-            timestampString = "520716759.403156"
+            timestampString = "520789807.727467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "648"
-            endingLineNumber = "648"
+            startingLineNumber = "647"
+            endingLineNumber = "647"
             landmarkName = "-startPayment:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FingoShop/ChoicePaymentViewController.m"
+            timestampString = "520790060.485129"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "542"
+            endingLineNumber = "542"
+            landmarkName = "-jsonData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FingoShop/ChoicePaymentViewController.m"
+            timestampString = "520790061.964595"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "546"
+            endingLineNumber = "546"
+            landmarkName = "-jsonData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

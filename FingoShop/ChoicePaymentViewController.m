@@ -530,13 +530,7 @@ heightForFooterInSection:(NSInteger)section {
         
             
         }
-    else if ([ServiceType isEqualToString:@"SubmitOrder"])
-    {
-        NSLog(@"=== ''' submitorder");
-        
-    }
-    
-        else {
+    else {
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[jsonDict objectForKey:@"status"] preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -545,9 +539,14 @@ heightForFooterInSection:(NSInteger)section {
             [self presentViewController:alertController animated:YES completion:nil];
         }
         
-    
+    if (([ServiceType isEqualToString:@"SubmitOrder"] && [selectedPaymentType isEqualToString:@"Cash on Delivery"]))
+    {
+    }
+    else{
+        [SVProgressHUD dismiss];
+    }
    
-    [SVProgressHUD dismiss];
+    
 
 }
 

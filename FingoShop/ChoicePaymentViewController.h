@@ -14,6 +14,9 @@
 @interface ChoicePaymentViewController : UIViewController<UITableViewDataSource,ServiceConnectionDelegate>
 {
     ServiceConnection *serviceconn;
+    NSMutableData *receivedData;
+    UIAlertController *alertController;
+  
 }
 @property(strong,nonatomic)NSMutableDictionary *shippingInfo;
 - (IBAction)startPayment:(id)sender;

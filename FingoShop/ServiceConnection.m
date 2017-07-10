@@ -84,6 +84,18 @@
     
     
 }
+-(void)sendOTP:(NSString *)url_Method
+{
+    
+   // NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/customer/sendotpcod?telephone=%@",params];
+   NSString *urlPath = [url_Method stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+    NSURL *url=[NSURL URLWithString:urlPath];
+    
+    [self startRequestForUrl:url];
+    
+    
+}
 
 -(void)submitOrder
 {

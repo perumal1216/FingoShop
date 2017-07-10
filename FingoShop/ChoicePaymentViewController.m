@@ -30,6 +30,10 @@
     NSIndexPath *oldIndex;
     
 }
+@property (weak, nonatomic) IBOutlet UITextField *enterOtpTxt;
+@property (weak, nonatomic) IBOutlet UILabel *resendTelephoneL;
+@property (weak, nonatomic) IBOutlet UIView *verify_view;
+@property (weak, nonatomic) IBOutlet UILabel *telephoneL;
 @property (weak, nonatomic) IBOutlet UITableView *tblPayment;
 @property (strong,nonatomic) NSArray *paymentTypesArray;
 
@@ -52,10 +56,18 @@
     [super viewDidLoad];
     
     NSLog(@"shippingInfo %@",shippingInfo);
-    
-    
-    
     shippingdict=[shippingInfo objectForKey:@"shippingAddress"];
+    
+    //otp conecept
+    
+    
+    self.verify_view.hidden = YES;
+    self.resendTelephoneL.hidden = YES;
+    self.telephoneL.text = [NSString stringWithFormat:@"%@",[shippingdict objectForKey:@"telephone"]];
+    
+    
+    
+    
     
     NSString *total = [NSString stringWithFormat:@"%@",[shippingdict objectForKey:@"grand_total"]];
     
@@ -185,10 +197,20 @@
         
         if ([payment_method isEqualToString:@"Cash on Delivery"]) {
             
-            [cell.continue_button setTitle:@"PLACE ORDER" forState:UIControlStateNormal];
+            if ([ServiceType isEqualToString:@"VerifyOTP"]) {
+                
+                [cell.continue_button setTitle:@"PLACE ORDER" forState:UIControlStateNormal];
+            }
+            else{
+                [cell.continue_button setTitle:@"Mobile no verify" forState:UIControlStateNormal];
+                
+            }
+            
+            
+            //self.verify_view.hidden = NO;
             
         }else{
-            
+            self.verify_view.hidden = YES;
             [cell.continue_button setTitle:@"CONTINUE" forState:UIControlStateNormal];
         }
         
@@ -316,6 +338,43 @@ heightForFooterInSection:(NSInteger)section {
     [self.navigationController popViewControllerAnimated:YES];
    // [self performSegueWithIdentifier:@"Home" sender:self];
 }
+- (IBAction)resendButtonAction:(id)sender {
+//      self.optwithmobileLabel.text = [NSString stringWithFormat:@"OTP resent to %@",[postDict objectForKey:@"mobile"]];
+    
+    NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/customer/resendotp?mobile=%@",_telephoneL.text];
+    
+    [self callMobileverify:url_Method type:@"ResendOTP"];
+    
+    
+}
+- (IBAction)verifyButtonAction:(id)sender
+{
+    
+    
+    if ([self.enterOtpTxt.text length]>0)
+    {
+        
+        NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/customer/verifyotpcod?otp=%@&mobile=%@",_enterOtpTxt.text,_telephoneL.text];
+        
+        [self callMobileverify:url_Method type:@"VerifyOTP"];
+        
+    }
+    else
+    {
+        alertController = [UIAlertController alertControllerWithTitle:@"Fingoshop" message:@"Please enter OTP" preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+
+  
+    
+    
+}
+
+
 
 -(void)btnShipmentClicked
 {
@@ -336,10 +395,22 @@ heightForFooterInSection:(NSInteger)section {
      
      }
      else if ([[_paymentTypesArray objectAtIndex:selected_indexPath.row] isEqualToString:@"Cash on Delivery"]) {
-     selectedPaymentType = @"Cash on Delivery";
-     selectedPaymentMethod = @"cashondelivery";
+         
+         if ([sender.titleLabel.text isEqualToString:@"Mobile no verify"]) {
+             
+             NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/customer/sendotpcod?telephone=%@",_telephoneL.text];
+             
+             [self callMobileverify:url_Method type:@"OTPSend"];
+             
+         }
+         else{
+             
+             selectedPaymentType = @"Cash on Delivery";
+             selectedPaymentMethod = @"cashondelivery";
+             
+             [self callSavePayment:selectedPaymentMethod];
+         }
      
-     [self callSavePayment:selectedPaymentMethod];
      
      }
      else if ([[_paymentTypesArray objectAtIndex:selected_indexPath.row] isEqualToString:@"Net Banking"]) {
@@ -380,6 +451,16 @@ heightForFooterInSection:(NSInteger)section {
     [serviceconn savePayment:paymentMethod];
 
 }
+-(void)callMobileverify:(NSString*)url_Method type:(NSString*)Type {
+    [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack]; // Progress
+    
+    serviceconn = [[ServiceConnection alloc]init];
+    serviceconn.delegate = self;
+    ServiceType= Type;
+    [serviceconn sendOTP:url_Method];
+    
+}
+
 
 -(void)callsubmitOrder {
     [SVProgressHUD showWithStatus:@"Please wait" maskType:SVProgressHUDMaskTypeBlack]; // Progress
@@ -401,21 +482,222 @@ heightForFooterInSection:(NSInteger)section {
     
 }
 
+#pragma mark - Connection Delegate Methods
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [receivedData setLength:0];
+    NSLog(@"%@",response);
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [receivedData appendData:data];
+    NSLog(@"getting data");
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    [SVProgressHUD dismiss];
+    
+    NSError *error;
+    NSMutableDictionary *dictObj = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONReadingAllowFragments error:&error];
+    NSLog(@"%@",dictObj);
+    // NSLog(@"Val = %@",[array objectAtIndex:0]);
+    if (error!=nil)
+    {
+        NSLog(@"JSON Parsing Error %@",[error localizedDescription]);
+    }
+    else
+    {
+        if ([ServiceType isEqualToString:@"sendOTP"]) {
+            
+            
+            if ([[NSString stringWithFormat:@"%@",[dictObj objectForKey:@"status"]] isEqualToString:@"1"])
+            {
+                alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[dictObj objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
+                
+                [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    // [self.navigationController popViewControllerAnimated:YES];
+                    _backNavigationName = @"SendOTP";
+                    _backNavigationName1 = @"SendOTP";
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+                    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }]];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+            }
+            else
+                
+            {
+                alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[dictObj objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
+                
+                [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    // [self closeAlertview];
+                }]];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+            }
+            
+        }
+        else{
+            if ([[NSString stringWithFormat:@"%@",[dictObj objectForKey:@"status"]] isEqualToString:@"1"])
+            {
+                
+                alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[dictObj objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
+                
+                [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    
+                }]];
+                
+                
+                
+            }
+            else
+            {
+                alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[dictObj objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
+                
+                [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    // [self closeAlertview];
+                }]];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+            }
+            
+            
+            
+            
+        }
+        
+    }
+}
+
+
+
 
 #pragma mark - ServiceConnection Delegate Methods
 
 - (void)jsonData:(NSDictionary *)jsonDict
 {
     NSLog(@"Result Dict:%@",jsonDict);
-    
+ 
     if ([ServiceType isEqualToString:@"PaymentMethods"]) {
-        
-        
+ 
+ 
         paymentTypesDict = jsonDict;
         _paymentTypesArray = [paymentTypesDict allKeys];
         [self.tblPayment reloadData];
     }
+    else if ([ServiceType isEqualToString:@"OTPSend"])
+    {
+        if ([[jsonDict objectForKey:@"status"]boolValue] == YES) {
+            
+            alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[jsonDict objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                
+                self.verify_view.hidden = NO;
+                
+            }]];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+            
+        }
+        else
+        {
+        alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[jsonDict objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            self.verify_view.hidden = YES;
+           
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
 
+        }
+        
+    }
+    
+    else if ([ServiceType isEqualToString:@"VerifyOTP"])
+    {
+        if ([[jsonDict objectForKey:@"status"] boolValue] == YES) {
+            
+            alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[jsonDict objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                
+                self.verify_view.hidden = YES;
+                
+                NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:0 inSection:1];
+                NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
+                [_tblPayment reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationNone];
+                
+            }]];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+            
+        }
+        else
+        {
+            alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[jsonDict objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                self.verify_view.hidden = NO;
+                
+            }]];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+        }
+        
+    }
+    else if ([ServiceType isEqualToString:@"ResendOTP"])
+    {
+        if ([[jsonDict objectForKey:@"status"]boolValue] == YES) {
+            
+            alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[jsonDict objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                
+                self.verify_view.hidden = NO;
+                self.resendTelephoneL.hidden = NO;
+                self.resendTelephoneL.text = [NSString stringWithFormat:@"OTP resent to %@",[shippingdict objectForKey:@"telephone"]];
+                
+              //  NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:0 inSection:1];
+              //  NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
+             //   [_tblPayment reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationNone];
+                
+            }]];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+            
+        }
+        else
+        {
+            alertController = [UIAlertController alertControllerWithTitle:@"FINGOSHOP" message:[NSString stringWithFormat:@"%@",[jsonDict objectForKey:@"message"]] preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                self.verify_view.hidden = NO;
+                
+            }]];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+        }
+        
+    }
     else if ([ServiceType isEqualToString:@"SavePayment"]) {
         
         if ([[jsonDict objectForKey:@"status"] isEqualToString:@"success"] && [[jsonDict objectForKey:@"nextStep"] isEqualToString:@"submit"]) {

@@ -575,7 +575,22 @@ heightForFooterInSection:(NSInteger)section {
     }
 }
 
+#pragma mark - TextFiled Delegate Methods
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.view.frame = CGRectMake(0, self.view.frame.origin.y - 250,self.view.frame.size.width, self.view.frame.size.height);
+    
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+  self.view.frame = CGRectMake(0, self.view.frame.origin.y + 250,self.view.frame.size.width, self.view.frame.size.height);
+  [textField resignFirstResponder];
+ 
+    return YES;
+}
 
 
 #pragma mark - ServiceConnection Delegate Methods

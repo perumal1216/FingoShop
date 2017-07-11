@@ -41,7 +41,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "329"
             endingLineNumber = "329"
-            landmarkName = "-AddToWishList:"
+            landmarkName = "-GetWishList:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,8 +73,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "649"
             endingLineNumber = "649"
-            landmarkName = "-postRequestForUrl:postBody:"
-            landmarkType = "7">
+            landmarkName = "@implementation ServiceConnection"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -281,7 +281,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "761"
             endingLineNumber = "761"
-            landmarkName = "-callSortProductListService:order:dir:"
+            landmarkName = "-callProductListService:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

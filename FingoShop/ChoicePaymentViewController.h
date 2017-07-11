@@ -11,7 +11,7 @@
 #import "PayU_iOS_CoreSDK.h"
 
 
-@interface ChoicePaymentViewController : UIViewController<UITableViewDataSource,ServiceConnectionDelegate>
+@interface ChoicePaymentViewController : UIViewController<UITableViewDataSource,ServiceConnectionDelegate,UITextFieldDelegate>
 {
     ServiceConnection *serviceconn;
     NSMutableData *receivedData;

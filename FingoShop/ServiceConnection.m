@@ -274,8 +274,10 @@
 
 -(void)GetSearchList:(NSString *)Post
 {
+    //https://www.fingoshop.com/restconnect/search/searchnew?q=fidget
+    // NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/search?q=%@&SID=%@",Post,[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
+    NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/search/searchnew?q=%@",Post];
     
-     NSString *url_Method=[NSString stringWithFormat:@"https://www.fingoshop.com/restconnect/search?q=%@&SID=%@",Post,[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"]];
     NSString* urlText = url_Method;
 //    [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]
     NSString* urlTextEscaped =[urlText stringByAddingPercentEscapesUsingEncoding:
